@@ -12,3 +12,5 @@ Sì
 Bravissimi a tutti quelli che sono riusciti a fare un commit la settimana scorsa!!!!
 
 Questa settimana invece spezzeremo le braccia a quelli che non riescono :)
+
+Bella rega
