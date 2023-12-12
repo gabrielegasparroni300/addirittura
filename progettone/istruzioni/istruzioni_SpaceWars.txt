@@ -1,0 +1,7 @@
+muovi l'astronave con i tasti direzionali
+spara con il tasto SPAZIO
+evita gli avversari
+ogni 10 punti sali di livello e arrivano nemici speciali
+premi ESC per uscire
+
+BUON DIVERTIMENTO

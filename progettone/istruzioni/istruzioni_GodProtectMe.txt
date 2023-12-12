@@ -1,0 +1,6 @@
+ti puoi muovere con le W, A, S, D
+devi prendere le bombe per salvare il castello
+se arrivano tutte le bombe nel castello, muori
+premi ESC per uscire
+
+BUON DIVERTIMENTO

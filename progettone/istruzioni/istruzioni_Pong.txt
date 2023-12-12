@@ -1,0 +1,7 @@
+SERVONO DUE GIOCATORI
+PLAYER 1 : ti puoi muovere in alto e in basso con le frecce
+PLAYER 2 : ti puoi muovere in alto e in basso con W E 
+se la pallina va fuori da l campo ha vinto il giocatore avversario
+premi ESC per uscire
+
+BUON DIVERTIMENTO

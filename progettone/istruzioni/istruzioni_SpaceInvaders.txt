@@ -1,0 +1,6 @@
+clicca spazio per iniziare
+ti puoi spostare a destra e sinistra con le frecce
+puoi sparare con lo spazio
+premi ESC per uscire
+
+BUON DIVERTIMENTO

@@ -1,0 +1,6 @@
+PLAYER ROSSO : ti può muovere in tutte le direzioni con le frecce e sparare con invio
+PLAYER BLU : ti può muovere in tutte le direzioni con W, A, S, D e sparare con spazio
+muori se finisce il tempo
+premi ESC per uscire
+
+BUON DIVERTIMENTO

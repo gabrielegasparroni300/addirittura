@@ -1,0 +1,6 @@
+ti puoi spostare in alto e in basso con le frecce
+l’importante è passare tra i muri
+muori se prendi il muro
+premi ESC per uscire
+
+BUON DIVERTIMENTO

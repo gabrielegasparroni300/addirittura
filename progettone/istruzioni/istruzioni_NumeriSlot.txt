@@ -1,0 +1,6 @@
+leggi le avvertenze
+clicca spazio per carica
+se hai tutti i numeri uguali hai vinto
+premi ESC per uscire
+
+BUON DIVERTIMENTO

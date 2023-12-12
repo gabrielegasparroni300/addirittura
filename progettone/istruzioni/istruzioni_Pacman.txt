@@ -1,0 +1,6 @@
+ti puoi muovere con le frecce : in altro, in basso, a destra e a sinistra
+prendi le monete
+se vieno presa dai mostri muori
+premi ESC per uscire
+
+BUON DIVERTIMENTO
