@@ -1,6 +1,6 @@
-ti puoi muovere a destra, a sinistra, in alto e in basso con le frecce
-devi prendere la mela
-se vai fuori dal recinto muori
-premi ESC per uscire
+Ti puoi muovere a destra, a sinistra, in alto e in basso con le frecce
+Devi prendere la mela
+Se vai fuori dal recinto muori
+Premi ESC per uscire
 
-BUON DIVERTIMENTO
+BUON DIVERTIMENTO!
