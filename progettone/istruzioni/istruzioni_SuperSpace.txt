@@ -1,6 +1,6 @@
-ti puoi spostare sopra, sotto, a destra e a sinistra
-devi schiavare gli ostacoli
-se prendi l'ostacolo perdi
-premi ESC per uscire
+Ti puoi spostare in alto, in basso, a destra e a sinistra con le frecce
+Devi schiavare gli ostacoli
+Se prendi l'ostacolo perdi
+Premi ESC per uscire
 
-BUON DIVERTIMENTO
+BUON DIVERTIMENTO!
