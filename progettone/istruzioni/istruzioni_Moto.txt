@@ -1,6 +1,6 @@
-ti puoi muovere in alto e in basso con le frecce
-devi prendere le monete
-se prendi gli ostacoli muori
-premi ESC per uscire
+Ti puoi muovere in alto e in basso con le frecce
+Devi prendere le monete
+Se prendi gli ostacoli muori
+Premi ESC per uscire
 
-BUON DIVERTIMENTO
+BUON DIVERTIMENTO!
