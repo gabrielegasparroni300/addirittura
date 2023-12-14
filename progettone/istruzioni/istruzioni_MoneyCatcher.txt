@@ -1,7 +1,7 @@
-ti puoi spostare a sinistra e a destra con le frecce
-se prendi le monete aumenti di 1
-dopo 20 venti punti aumenti di 5
-se prendi l’alieno muori
-premi ESC per uscire
+Ti puoi spostare a sinistra e a destra con le frecce
+Se prendi le monete aumenti di 1
+Dopo 20 venti punti aumenti di 5
+Se prendi lâ€™alieno muori
+Premi ESC per uscire
 
-BUON DIVERTIMENTO
+BUON DIVERTIMENTO!
