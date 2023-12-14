@@ -1,7 +1,7 @@
-muovi l'astronave con i tasti direzionali
-spara con il tasto SPAZIO
-evita gli avversari
-ogni 10 punti sali di livello e arrivano nemici speciali
-premi ESC per uscire
+Muovi l'astronave con i tasti direzionali
+Spara con il tasto SPAZIO
+Evita gli avversari
+Ogni 10 punti sali di livello e arrivano nemici speciali
+Premi ESC per uscire
 
-BUON DIVERTIMENTO
+BUON DIVERTIMENTO!
