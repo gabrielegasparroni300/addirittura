@@ -35,25 +35,23 @@ textButton12 = buttonFont.render("Pong",True,"black")
 
 # pulsanti
 buttonEsci = pygame.Rect(half_WIDTH + 500, half_HEIGHT - 400, 100, 50)
-buttonGioco1 = pygame.Rect(254, 368, 175, 100)
-buttonGioco2 = pygame.Rect(254, 568, 175, 100)
+buttonGioco1 = pygame.Rect(254, 368, 150, 100)
+buttonGioco2 = pygame.Rect(254, 568, 250, 100)
 buttonGioco3 = pygame.Rect(254, 768, 175, 100)
-buttonGioco4 = pygame.Rect(658, 368, 175, 100)
-buttonGioco5 = pygame.Rect(658, 568, 175, 100)
-buttonGioco6 = pygame.Rect(658, 768, 175, 100)
-buttonGioco7 = pygame.Rect(1062, 368, 175, 100)
-buttonGioco8 = pygame.Rect(1062, 568, 175, 100)
-buttonGioco9 = pygame.Rect(1062, 768, 175, 100)
+buttonGioco4 = pygame.Rect(658, 368, 225, 100)
+buttonGioco5 = pygame.Rect(658, 568, 225, 100)
+buttonGioco6 = pygame.Rect(658, 768, 225, 100)
+buttonGioco7 = pygame.Rect(1062, 368, 150, 100)
+buttonGioco8 = pygame.Rect(1062, 568, 150, 100)
+buttonGioco9 = pygame.Rect(1062, 768, 200, 100)
 buttonGioco10 = pygame.Rect(1466, 368, 175, 100)
 buttonGioco11 = pygame.Rect(1466, 568, 175, 100)
-buttonGioco12 = pygame.Rect(1466, 768, 175, 100)
+buttonGioco12 = pygame.Rect(1466, 768, 150, 100)
 
 # lo screen (con titolo)
 pygame.display.set_caption("Schermata iniziale")
 
 
-
-# facile...
 running = True
 
 while running:
@@ -69,13 +67,13 @@ while running:
             if buttonEsci.collidepoint(mPos):
                 running = False
 
-    # colora lo schermo di verde
+    # colora lo schermo
     screen.fill("oldlace")
     
     buttonColor = "red"
     buttonColorEsci = "red"
     if buttonEsci.collidepoint(mPos):
-        buttonColorEsci = "blue"
+        buttonColorEsci = "crimson"
     rectEsci = pygame.draw.rect(screen,buttonColorEsci,buttonEsci)
     rectGioco1 = pygame.draw.rect(screen,buttonColor,buttonGioco1)
     rectGioco2 = pygame.draw.rect(screen,buttonColor,buttonGioco2)
@@ -92,9 +90,18 @@ while running:
     
     screen.blit(textTitolo, (half_WIDTH - 100,100))
     screen.blit(textEsci,(half_WIDTH + 500, half_HEIGHT - 400) )
-    
-    
-    
+    screen.blit(textButton1,(254,385))
+    screen.blit(textButton2,(254,585))
+    screen.blit(textButton3,(254,785))
+    screen.blit(textButton4,(658,385))
+    screen.blit(textButton5,(658,585))
+    screen.blit(textButton6,(658,785))
+    screen.blit(textButton7,(1062,385))
+    screen.blit(textButton8,(1062,585))
+    screen.blit(textButton9,(1062,785))
+    screen.blit(textButton10,(1466,385))
+    screen.blit(textButton11,(1466,585))
+    screen.blit(textButton12,(1466,785))
     
     # aggiorna il contenuto dello schermo
     pygame.display.flip()
