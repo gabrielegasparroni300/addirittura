@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, MovementModule
 
 #God Protect Me
 
@@ -13,8 +13,8 @@ pygame.mixer.music.play(loops = -1)
 
 #Screen setup
 
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+SCREEN_WIDTH = pygame.display.get_desktop_sizes()[0][0]
+SCREEN_HEIGHT = pygame.display.get_desktop_sizes()[0][1]
 
 screen = pygame.display.set_mode( (SCREEN_WIDTH, SCREEN_HEIGHT ) )
 pygame.display.set_caption("God Protect Me")
@@ -110,25 +110,12 @@ while running:
         
         if event.type == ADD_ENEMY:
             
-            enemy_position_x1 = random.randint(-25, SCREEN_WIDTH + 25)
-            enemy_position_y1 = random.randint(-25, 0)
+            for times in range(30):
+                enemy_position_x = random.randint(-25, SCREEN_WIDTH + 25)
+                enemy_position_y = random.randint(-25, SCREEN_HEIGHT + 25)
             
-            enemy_position_x2 = random.randint(-25, 0)
-            enemy_position_y2 = random.randint(-25, SCREEN_HEIGHT + 25)
-            
-            enemy_position_x3 = random.randint(SCREEN_WIDTH, SCREEN_WIDTH + 25)
-            enemy_position_y3 = random.randint(-25, SCREEN_HEIGHT + 25)
-
-            enemy_position_x4 = random.randint(-25, SCREEN_WIDTH + 25)
-            enemy_position_y4 = random.randint(SCREEN_HEIGHT, SCREEN_HEIGHT + 25)
-            
-            enemy_list.append((enemy_position_x1, enemy_position_y1, 45, 60))
-            
-            enemy_list.append((enemy_position_x2, enemy_position_y2, 45, 60))
-            
-            enemy_list.append((enemy_position_x3, enemy_position_y3, 45, 60))
-            
-            enemy_list.append((enemy_position_x4, enemy_position_y4, 45, 60))
+                if MovementModule.is_on_screen(enemy_position_x, enemy_position_y, SCREEN_WIDTH, SCREEN_HEIGHT) == False:
+                    enemy_list.append((enemy_position_x, enemy_position_y, 45, 60))
     
     #Using the positions from the list to spawn the enemies
     
@@ -163,21 +150,21 @@ while running:
         
     #Checking for collisions between an enemy and the cursor
         
-        if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
-            dead_enemy = enemy_list.pop(i)
-            dead_enemy_list.append(dead_enemy)
-            dead = screen.blit(dead_enemy_image, (dead_enemy))
-            score += random.randint(100, 250)
-            break
-
-    for stat in range(len(static_enemy_list)):
-        if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
-            dead_enemy = static_enemy_list.pop(stat)
-            dead_enemy_list.append(dead_enemy)
-            dead = screen.blit(dead_enemy_image, (dead_enemy))
-            score += random.randint(100, 250)
-            break
-        
+#         if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
+#             dead_enemy = enemy_list.pop(i)
+#             dead_enemy_list.append(dead_enemy)
+#             dead = screen.blit(dead_enemy_image, (dead_enemy))
+#             score += random.randint(100, 250)
+#             break
+# 
+#     for stat in range(len(static_enemy_list)):
+#         if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
+#             dead_enemy = static_enemy_list.pop(stat)
+#             dead_enemy_list.append(dead_enemy)
+#             dead = screen.blit(dead_enemy_image, (dead_enemy))
+#             score += random.randint(100, 250)
+#             break
+#         
         for (x,y) in dead_enemy_list:
             x,y = 0,0
             enemy_speed -= enemy_speed
@@ -205,8 +192,6 @@ while running:
     castle_damage_taken = pygame.draw.rect(screen, "#400101", (top_right[0], top_right[1], 500, 20))
     
     castle_health_left = pygame.draw.rect(screen, "#e61919", (top_right[0], top_right[1], health_bar, 20))
-    
-    Title = screen.blit(title, (SCREEN_WIDTH // 2 -250, 50))
     
     new_cursor = screen.blit(mouse_icon, mouse_pos)
 

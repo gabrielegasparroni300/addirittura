@@ -5,8 +5,7 @@
 # ARNAU MAZZARINI
 
 # Importiamo i moduli pygame e random
-import pygame
-import random
+import pygame, random
 
 # Importiamo i vari tasti della tastiera
 from pygame.locals import (

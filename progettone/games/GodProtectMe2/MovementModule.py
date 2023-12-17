@@ -3,7 +3,7 @@
 import pygame
 
 def move_player_1(pos_x, pos_y, speed) -> tuple:
-    """Gets the initial position and speed and returns the final position
+    """Gets the initial position and speed and returns the final position in the next frame
     """
     
     player_direction = pygame.Vector2(0, 0)
@@ -36,7 +36,7 @@ def move_player_1(pos_x, pos_y, speed) -> tuple:
     return player_direction.x * speed + pos_x, player_direction.y * speed + pos_y
 
 def move_player_2(pos_x, pos_y, speed) -> tuple:
-    """Gets the initial position and speed and returns the final position
+    """Gets the initial position and speed and returns the final position in the next frame
     """
     
     player_direction = pygame.Vector2(0, 0)
@@ -68,3 +68,14 @@ def move_player_2(pos_x, pos_y, speed) -> tuple:
     
     return player_direction.x * speed + pos_x, player_direction.y * speed + pos_y
 
+
+def is_on_screen(pos_x, pos_y, screen_width, screen_height) -> bool:
+    """Given the coordinates of an object and the size of the screen, the function returns a bool that tells if the object is on screen
+    """
+    
+    if pos_x < 0 or pos_x > screen_width:
+        return False
+    if pos_y < 0 or pos_y > screen_height:
+        return False
+    
+    return True
