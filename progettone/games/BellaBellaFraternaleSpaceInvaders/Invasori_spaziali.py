@@ -41,12 +41,12 @@ game_start = Titlefont.render('Premi "SPAZIO" per iniziare', True, "grey")
 Punteggio = Titlefont.render(f'Punteggio:{conta}', True, "red")
 Sconfitta = Titlefont.render(f'Hai Perso', True, "red")
 
-#
+#musica
 pygame.mixer.init() 
 pygame.mixer.music.load("laser.mp3") 
 pygame.mixer.music.set_volume(0.5) 
 
-#
+#dimensioni
 x = SCREEN_WIDTH // 2
 y = SCREEN_HEIGHT // 2 + 250
 
@@ -125,7 +125,7 @@ while running:
     if attivato == False:
         screen.blit(game_start, (SCREEN_WIDTH // 2 - 400,SCREEN_HEIGHT // 2))
     
-    
+   #funzionamento proiettili amici 
     for i in range(len(bullets)):
         xBfriendly,yBfriendly = bullets[i]
         if xBfriendly != 0 and yBfriendly != 0:
@@ -138,7 +138,7 @@ while running:
             break
         
 
-    #
+    # spawn nemici
     for i in range(len(enemies)):
         posx,posy = enemies[i]
         enemy = screen.blit(imgNemico, (posx, posy))
@@ -153,7 +153,9 @@ while running:
             
     Punteggio = Titlefont.render(f'Punteggio:{conta}', True, "red")
     screen.blit(Punteggio, (0,0))
-    
+
+   #funzionamento proiettili nemici 
+
     for c in range(len(enemies)):
         posx,posy = enemies[c]
         if keys[pygame.K_SPACE]:
@@ -164,7 +166,7 @@ while running:
             if len(enemyBullets) < 1:
                 enemyBullets.append( (xBEnemies, yBEnemies) )
             
-            
+    #tentativo schermata finale       
     for i in range(len(enemyBullets)):
         xBEnemies,yBEnemies = enemyBullets[i]
         if xBEnemies != 0 and yBEnemies != 0:
@@ -178,7 +180,8 @@ while running:
                 running = False
 #             if yBEnemies >= 1000:
 #                 yBEnemies = posy
-        
+
+# scomparsa proiettili nemici
         if yBEnemies >= 800:
             enemyBullets.pop(i)
             break
