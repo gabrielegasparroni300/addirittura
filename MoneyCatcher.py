@@ -9,13 +9,20 @@ import score
 
 
 #inizio pygame
-pygame.init() 
+pygame.init()
+
+pygame.mixer.music.load("retro-wave-style-track-59892.mp3") 
+pygame.mixer.music.set_volume(0.3) 
+pygame.mixer.music.play()
 
 #--------------------------------------------------------
 #SUONI
 #suono moneta
-pygame.mixer.init() 
+MONETA_SOUND = pygame.mixer.Sound("monetina.mp3")
+pygame.mixer.Sound.set_volume(MONETA_SOUND , 0.5)
 
+GRUZZOLETTO_SOUND = pygame.mixer.Sound("bonusuono.mp3")
+pygame.mixer.Sound.set_volume(GRUZZOLETTO_SOUND , 0.5)
 #-----------------------------------------------------------
 #DIMENSIONE E TITOLO DELLO SCHERMO
 
@@ -82,8 +89,8 @@ enemies = []
 #IMMAGINI SFONDO, NAVICELLA, MONETE, ALIENI,GRUZZOLETTO
 imgSfondo = pygame.image.load("spaziosfondo.jpg") 
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
-imgNavicella = pygame.image.load("navicellaa2.png") 
-imgNavicella = pygame.transform.scale(imgNavicella,(80,100))
+imgNavicella = pygame.image.load("razzo.png") 
+imgNavicella = pygame.transform.scale(imgNavicella,(100,120))
 imgMoneta = pygame.image.load("Moneta.png") 
 imgMoneta = pygame.transform.scale(imgMoneta,(40,40))
 imgAlieno = pygame.image.load("alienogiusto.png")
@@ -193,9 +200,7 @@ while running: #eseguito solo se running è ancora True
             money.pop(n)
             
             #suono monete
-            pygame.mixer.music.load("monetina.mp3") 
-            pygame.mixer.music.set_volume(0.5)
-            pygame.mixer.music.play()
+            pygame.mixer.Sound.play(MONETA_SOUND)
             break
     
     #per la presenza dei gruzzoletti
@@ -214,9 +219,7 @@ while running: #eseguito solo se running è ancora True
         if player.colliderect(HANGER):
             
             #suono bonus
-            pygame.mixer.music.load("bonusuono.mp3") 
-            pygame.mixer.music.set_volume(0.5)
-            pygame.mixer.music.play()
+            pygame.mixer.Sound.play(GRUZZOLETTO_SOUND)
            
             #aumento punteggio
             contaScore += 4

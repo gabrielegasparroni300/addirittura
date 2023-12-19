@@ -1,25 +1,26 @@
 # IMPORTAZIONE PYGAME E RANDOM
+#manca solo da aggiungere il timer
 import pygame
 import random
 
 #INIZIO PYGAME
 pygame.init()
 
-#dimensioni dello schermo
+#DIMENSIONE SCHERMO
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-#suono
+#AGGIUNTA SUONO IN LOOP
 pygame.mixer.init() 
 pygame.mixer.music.load("Honda CR 500 Sound Check Braaap!!!-0-16.9.mp3") 
 pygame.mixer.music.set_volume(0.5) 
 pygame.mixer.music.play(loops = -1)
 
-# impostazione sfondo
-imgSfondo = pygame.image.load("terreno.png")
+# AGGIUNTA TERRENO SULLO SFONDO
+imgSfondo = pygame.image.load("terreno3.png")
 screen = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
-#titolo 
+#FONT SCRITTE INIZIALI
 Titolo = pygame.font.SysFont("Rockwell Extra Bold", 100)
 scrittaGioco = pygame.font.SysFont("Rockwell Extra Bold", 50)
 
@@ -28,22 +29,22 @@ game_end = Titolo.render("MOTO RUN", True, "black")
 close_tip = scrittaGioco.render("clicca spazio per giocare", True, "black")
 
 # TITOLO GIOCO
-screen = pygame.display.set_mode( (SCREEN_WIDTH, SCREEN_HEIGHT) )
+screen = pygame.display.set_mode( (800, 600) )
 pygame.display.set_caption("MOTO RUN")
 
 #AGGIUNTA IMMAGINE GIOCATORE
 imgMoto = pygame.image.load("motoUfficiale.png")
-imgMoto = pygame.transform.scale(imgMoto,(80, 80))
+imgMoto = pygame.transform.scale(imgMoto,(70, 70))
 
 # AGGIUNTA IMMAGINI ENEMIES
 imgAlbero = pygame.image.load("alberoUfficiale.png")
-imgAlbero = pygame.transform.scale(imgAlbero,(50, 60))
+imgAlbero = pygame.transform.scale(imgAlbero,(70, 70))
 
 imgTrattore = pygame.image.load("trattoreUfficiale.png")
-imgTrattore = pygame.transform.scale(imgTrattore,(60,60))
+imgTrattore = pygame.transform.scale(imgTrattore,(70,70))
 
 imgMoneta = pygame.image.load("moneta.png")
-imgMoneta = pygame.transform.scale(imgMoneta,(50,50))
+imgMoneta = pygame.transform.scale(imgMoneta,(70,70))
 
 # TEMPO DI AGGIUNTA ENEMIES
 ADD_albero = pygame.USEREVENT + 1
@@ -53,7 +54,7 @@ add_trattore = pygame.USEREVENT + 1
 pygame.time.set_timer(add_trattore, 800)
 
 add_moneta = pygame.USEREVENT + 1
-pygame.time.set_timer(add_moneta, 800)
+pygame.time.set_timer(add_moneta, 1000)
 
 
 # ELENCO NEMICI
@@ -73,10 +74,11 @@ h = 20
 speed = 7
 superspeed = 14
 
+
 # DEFINISCO RUNNING E SCRITTA COME "TRUE"
 running = True
 scritta = True
-
+pausa = True
 while running:
     pygame.time.delay(15)
     # GESTIONE X DI CHIUSURA
@@ -91,47 +93,36 @@ while running:
         # SE PREMI SPAZIO IL GIOCO COMINCIA 
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             scritta = False
-        
-        #-------------------------------------------------------------------------------------
-    # COMPARSA NEMICI
-    # creo una lista per creare quattro corsie
-    listaCorsie = [25,175,325,475]
-    
-    contaAlberi = 0
-    contaTrattori = 0
-    contaMonete = 0
-    
-    # COMPARSA ALBERI  
-    if event.type == ADD_albero:
-        contaAlberi += 1
-        albero_x = SCREEN_WIDTH - 25
-        corsiaAlbero = random.randint(0,3)
-        albero_y = listaCorsie[corsiaAlbero]
-        enemiesAlberi.append((albero_x,albero_y))
-    
-    # COMPARSA TRATTORI
-    if event.type == add_trattore:
-        contaTrattori += 1
-        trattore_x = SCREEN_WIDTH - 20
-        while True:
-            if contaTrattori == contaAlberi:
-                corsiaTrattore = random.randint(0,3)
-                if corsiaTrattore != corsiaAlbero:
-                    break
+            pausa = False
             
-        trattore_y = listaCorsie[corsiaTrattore]
-        enemiesTrattori.append((trattore_x,trattore_y))
-    
-    # COMPARSA MONETE
-    if event.type == add_moneta:
-        contaMonete += 1
-        moneta_x = SCREEN_WIDTH - 20
-        while True:
-            corsiaMoneta = random.randint(0,3)
-            if corsiaMoneta != corsiaAlbero and corsiaMoneta != corsiaTrattore:
-                break
-        moneta_y = listaCorsie[corsiaMoneta]
-        enemiesMoneta.append((moneta_x,moneta_y))
+        if pausa:
+            continue
+        
+        # COMPARSA ALBERI  
+        if event.type == ADD_albero:
+                posx_alberi = SCREEN_WIDTH - 20
+                posy_alberi = random.randint(0, SCREEN_HEIGHT - 75)
+                enemiesAlberi.append( (posx_alberi,posy_alberi) )
+        
+        # COMPARSA TRATTORI
+        if event.type == add_trattore:
+                posx_trattori = SCREEN_WIDTH - 20
+                while True:
+                    posy_trattori = random.randint(0, SCREEN_HEIGHT - 100)
+                    if posy_trattori > posy_alberi + 75 or posy_trattori < posy_alberi - 75:
+                        break
+                
+                enemiesTrattori.append( (posx_trattori,posy_trattori) )
+        
+        # COMPARSA MONETE
+        if event.type == add_moneta:
+                posx_monete = SCREEN_WIDTH - 20
+                posy_monete = random.randint(0, SCREEN_HEIGHT - 100)
+                while True:
+                    posy_monete = random.randint(0, SCREEN_HEIGHT - 100)
+                    if (posy_monete > posy_alberi + 75 or posy_monete < posy_alberi - 75) and (posy_monete > posy_trattori + 75 or posy_monete < posy_trattori - 75):
+                        break
+                enemiesMoneta.append( (posx_monete,posy_monete) )
       
        # PREMI "P" per mettere in pausa (o uscire dalla pausa)
         #if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
@@ -170,9 +161,9 @@ while running:
     
     # APPARIZIONE ALBERI
     for i in range(len(enemiesAlberi)):
-        posx,posy = enemiesAlberi[i]
-        en = screen.blit(imgAlbero,(posx,posy))
-        enemiesAlberi[i] = (posx - 5, posy)
+        posx_alberi,posy_alberi = enemiesAlberi[i]
+        en = screen.blit(imgAlbero,(posx_alberi,posy_alberi))
+        enemiesAlberi[i] = (posx_alberi - 5, posy_alberi)
         # SE IL GIOCATORE SI SCONTRA CON UN ALBERO RUNNING DIVENTA FALSE
         # E IL GIOCO FINISCE
         if player.colliderect(en):
@@ -181,9 +172,9 @@ while running:
     
     # APPARIZIONE TRATTORI
     for i in range(len(enemiesTrattori)):
-        posizionex,posizioney = enemiesTrattori[i]
-        Trattore = screen.blit(imgTrattore,(posizionex,posizioney))
-        enemiesTrattori[i] = (posizionex - 5, posizioney)
+        posx_trattori,posy_trattori = enemiesTrattori[i]
+        Trattore = screen.blit(imgTrattore,(posx_trattori,posy_trattori))
+        enemiesTrattori[i] = (posx_trattori - 5, posy_trattori)
         # SE IL GIOCATORE SI SCONTRA CON UN TRATTORE RUNNING DIVENTA FALSE
         # E IL GIOCO FINISCE
         if player.colliderect(Trattore):
@@ -191,18 +182,19 @@ while running:
             running = False
     # SE IL GIOCATORE COLPISCE LE MONETE LA VELOCITA' AUMENTA DI 1 E LA MONETA SCOMPARE
     for i in range(len(enemiesMoneta)):
-        posizionex,posizioney = enemiesMoneta[i]
-        Moneta = screen.blit(imgMoneta,(posizionex,posizioney))
-        enemiesMoneta[i] = (posizionex - 5, posizioney)
+        posx_monete,posy_monete = enemiesMoneta[i]
+        Moneta = screen.blit(imgMoneta,(posx_monete,posy_monete))
+        enemiesMoneta[i] = (posx_monete - 5, posy_monete)
         if player.colliderect(Moneta):
             speed += 1
             enemiesMoneta.pop(i)
             break
     
-    print(speed)
 
     # AGGIORNA IL CODICE
     pygame.display.flip()
 
 # CHIUDE PYGAME
 pygame.quit()
+
+
