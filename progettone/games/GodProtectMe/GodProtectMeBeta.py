@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, MovementModule
 
 #God Protect Me
 
@@ -11,14 +11,10 @@ pygame.mixer.music.load("soundtrack.mp3")
 pygame.mixer.music.set_volume(0.85) 
 pygame.mixer.music.play(loops = -1)
 
-FULMINE_SOUND = pygame.mixer.Sound("lightening-bang-impact.mp3")
-pygame.mixer.Sound.set_volume(FULMINE_SOUND , 0.85)
-
-
 #Screen setup
 
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+SCREEN_WIDTH = pygame.display.get_desktop_sizes()[0][0]
+SCREEN_HEIGHT = pygame.display.get_desktop_sizes()[0][1]
 
 screen = pygame.display.set_mode( (SCREEN_WIDTH, SCREEN_HEIGHT ) )
 pygame.display.set_caption("God Protect Me")
@@ -63,6 +59,15 @@ mouse_icon = pygame.image.load("cursor.png")
 mouse_icon = pygame.transform.scale(mouse_icon, (40,40))
 pygame.mouse.set_visible(False)
 
+#Player Info
+spawn_point_x = SCREEN_WIDTH // 2
+spawn_point_y = SCREEN_HEIGHT // 2
+
+player_speed = 5
+
+player_width = 50
+player_height = 50
+
 #Enemy's information
 
 ADD_ENEMY = pygame.USEREVENT + 1
@@ -81,8 +86,8 @@ target_y = SCREEN_HEIGHT // 2
 enemy_image = pygame.image.load("enemy.png")
 enemy_image = pygame.transform.scale(enemy_image, (58, 56))
 
-dead_enemy_image = pygame.image.load("deadEnemy.png")
-dead_enemy_image = pygame.transform.scale(dead_enemy_image, (58, 56))
+dead_enemy_image = pygame.image.load("fulmine.png")
+dead_enemy_image = pygame.transform.scale(dead_enemy_image, (70, 100))
 
 #Level generation
 
@@ -114,25 +119,12 @@ while running:
         
         if event.type == ADD_ENEMY:
             
-            enemy_position_x1 = random.randint(-25, SCREEN_WIDTH + 25)
-            enemy_position_y1 = random.randint(-25, 0)
+            for times in range(30):
+                enemy_position_x = random.randint(-25, SCREEN_WIDTH + 25)
+                enemy_position_y = random.randint(-25, SCREEN_HEIGHT + 25)
             
-            enemy_position_x2 = random.randint(-25, 0)
-            enemy_position_y2 = random.randint(-25, SCREEN_HEIGHT + 25)
-            
-            enemy_position_x3 = random.randint(SCREEN_WIDTH, SCREEN_WIDTH + 25)
-            enemy_position_y3 = random.randint(-25, SCREEN_HEIGHT + 25)
-
-            enemy_position_x4 = random.randint(-25, SCREEN_WIDTH + 25)
-            enemy_position_y4 = random.randint(SCREEN_HEIGHT, SCREEN_HEIGHT + 25)
-            
-            enemy_list.append((enemy_position_x1, enemy_position_y1, 45, 60))
-            
-            enemy_list.append((enemy_position_x2, enemy_position_y2, 45, 60))
-            
-            enemy_list.append((enemy_position_x3, enemy_position_y3, 45, 60))
-            
-            enemy_list.append((enemy_position_x4, enemy_position_y4, 45, 60))
+                if MovementModule.is_on_screen(enemy_position_x, enemy_position_y, SCREEN_WIDTH, SCREEN_HEIGHT) == False:
+                    enemy_list.append((enemy_position_x, enemy_position_y, 45, 60))
     
     #Using the positions from the list to spawn the enemies
     
@@ -169,10 +161,9 @@ while running:
         
         if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
             dead_enemy = enemy_list.pop(i)
-            pygame.mixer.Sound.play(FULMINE_SOUND)
-            pygame.mixer.music.play()
             dead_enemy_list.append(dead_enemy)
-            dead = screen.blit(dead_enemy_image, (dead_enemy))
+            for x in range(180):
+                dead = screen.blit(dead_enemy_image, (dead_enemy))
             score += random.randint(100, 250)
             break
 
@@ -180,7 +171,8 @@ while running:
         if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
             dead_enemy = static_enemy_list.pop(stat)
             dead_enemy_list.append(dead_enemy)
-            dead = screen.blit(dead_enemy_image, (dead_enemy))
+            for x in range(180):
+                dead = screen.blit(dead_enemy_image, (dead_enemy))
             score += random.randint(100, 250)
             break
         
@@ -197,13 +189,19 @@ while running:
         if hp == 0:
             break
         health_bar -= (health_bar * dmg) / hp
-        
+    
+    #Moving the player
+    spawn_point_x = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [0]
+    spawn_point_y = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [1]
+    
     #Stoppping the game when the player loses all the health points
     
     if hp <= 0:
         game_end = screen.blit(game_over, (SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2))
         click_esc = screen.blit(click_exit, (SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2 + 80))
-
+    
+    player = pygame.draw.rect(screen, "blue", (spawn_point_x, spawn_point_y, player_width, player_height))
+    
     #Adding all of the HUD elements
     
     score_text = screen.blit(player_score, top_left)
@@ -211,8 +209,6 @@ while running:
     castle_damage_taken = pygame.draw.rect(screen, "#400101", (top_right[0], top_right[1], 500, 20))
     
     castle_health_left = pygame.draw.rect(screen, "#e61919", (top_right[0], top_right[1], health_bar, 20))
-    
-    Title = screen.blit(title, (SCREEN_WIDTH // 2 -250, 50))
     
     new_cursor = screen.blit(mouse_icon, mouse_pos)
 
