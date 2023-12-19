@@ -5,8 +5,7 @@
 # ARNAU MAZZARINI
 
 # Importiamo i moduli pygame e random
-import pygame
-import random
+import pygame, random
 
 # Importiamo i vari tasti della tastiera
 from pygame.locals import (
@@ -23,7 +22,7 @@ from pygame.locals import (
     K_d,
     K_p,
     K_SPACE,
-    K_KP_ENTER,
+    K_BACKSPACE,
     K_RETURN
 )
 
@@ -43,7 +42,7 @@ SCREEN_WIDTH = 1500
 SCREEN_HEIGHT = 800
 
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
-
+pygame.display.set_caption("Space something")
 
 imgSfondo = pygame.image.load("Spazio3.png")
 imgSfondo = pygame.transform.scale(imgSfondo, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -180,8 +179,8 @@ img_wasd  = pygame.transform.scale(img_wasd, (205, 205 ))
 img_arrow = pygame.image.load("ARROW.png")
 img_arrow   = pygame.transform.scale(img_arrow , (205, 205 ))
 
-img_invio =  pygame.image.load("INVIO.png")
-img_invio  = pygame.transform.scale(img_invio, (205, 205 ))
+img_backspace =  pygame.image.load("BACKSPACE.png")
+img_backspace  = pygame.transform.scale(img_backspace, (220, 220 ))
 
 img_navicella3 = pygame.image.load("Navicella1.png")
 img_navicella3 = pygame.transform.scale(img_navicella3, (120, 113 ))
@@ -387,8 +386,8 @@ while running:
             s1.fill((20 ,20,20 , 120 ))                       
             screen.blit(s1, ((SCREEN_WIDTH // 2 + 150  ) , 100 ))
             screen.blit(img_wasd, ((SCREEN_WIDTH // 2 + 230 ) , 200  ))
-            screen.blit(img_arrow, ((SCREEN_WIDTH // 2 + 170 ) , SCREEN_HEIGHT // 2 + 125 ))
-            screen.blit(img_invio , ((SCREEN_WIDTH // 2 + 300 ) , SCREEN_HEIGHT // 2 + 100 ))
+            screen.blit(img_arrow, ((SCREEN_WIDTH // 2 + 230 ) , SCREEN_HEIGHT // 2 + 125 ))
+            screen.blit(img_backspace , ((SCREEN_WIDTH // 2 + 230 ) , SCREEN_HEIGHT // 2 + 180 ))
             screen.blit(PLAYER2 , ((SCREEN_WIDTH // 2 + 230 ) , SCREEN_HEIGHT // 2 + 50 ))
             screen.blit(PLAYER1 , ((SCREEN_WIDTH  // 2 + 230 ) , 150 ))
             screen.blit(img_navicella3 , ((SCREEN_WIDTH //2 + 450 ) , 225   ))
@@ -445,7 +444,7 @@ while running:
             #---------
             s2 = pygame.Surface((850, 400 ), pygame.SRCALPHA)   
             # (r, g, b, opacità)
-            s2.fill((150 , 150, 150, 10 ))
+            s2.fill((20 ,20, 20, 10 ))
             
             screen.blit(s2, ((SCREEN_WIDTH // 4 -50  ) , SCREEN_HEIGHT // 4 - 50  ))
             screen.blit(winner , (SCREEN_WIDTH // 3.5 , SCREEN_HEIGHT // 4 ) )
@@ -496,7 +495,7 @@ while running:
     if pressed_keys[K_RIGHT] and x2 < SCREEN_WIDTH - w2: 
         x2 += speed 
 
-    if pressed_keys[K_KP_ENTER] and len(bullets2)< 10:
+    if pressed_keys[K_BACKSPACE] and len(bullets2)< 10:
         x4 = x2
         y4 = y2
         bullets2.append( (x4, y4) )
