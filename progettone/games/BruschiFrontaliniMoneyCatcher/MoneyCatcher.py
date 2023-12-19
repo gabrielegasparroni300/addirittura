@@ -82,8 +82,8 @@ enemies = []
 #IMMAGINI SFONDO, NAVICELLA, MONETE, ALIENI,GRUZZOLETTO
 imgSfondo = pygame.image.load("spaziosfondo.jpg") 
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
-imgNavicella = pygame.image.load("razzo.png") 
-imgNavicella = pygame.transform.scale(imgNavicella,(100,120))
+imgNavicella = pygame.image.load("navicellaa2.png") 
+imgNavicella = pygame.transform.scale(imgNavicella,(80,100))
 imgMoneta = pygame.image.load("Moneta.png") 
 imgMoneta = pygame.transform.scale(imgMoneta,(40,40))
 imgAlieno = pygame.image.load("alienogiusto.png")
