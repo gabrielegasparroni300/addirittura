@@ -1,5 +1,6 @@
 # importa ed inizializza la libreria pygame
 import pygame
+from pathlib import Path
 
 pygame.init()
 
@@ -63,9 +64,58 @@ while running:
             running = False
     
         # quando clicchi SOPRA il pulsante... FAI QUALCOSA!!!
-        if event.type == pygame.MOUSEBUTTONDOWN: 
+        if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonEsci.collidepoint(mPos):
                 running = False
+        # Jumper
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco1.collidepoint(mPos):
+                import JUMPER
+        # Space something
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco2.collidepoint(mPos):
+                import Space Something
+        # Space wars
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco3.collidepoint(mPos):
+                import Space Wars
+        # God protect me
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco4.collidepoint(mPos):
+                import GodProtectMe2
+        # Space invaders
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco5.collidepoint(mPos):
+                import Space invaders
+        # Money catcher
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco6.collidepoint(mPos):
+                import Money catcher
+        # Slot
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco7.collidepoint(mPos):
+                import Slot
+        # Fuffy bird
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco8.collidepoint(mPos):
+                import Fuffy Bird
+        # SuperSpace
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco9.collidepoint(mPos):
+                import SuperSpace
+        # MotoRUN
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco10.collidepoint(mPos):
+                import MotoRUN
+        # PACMAN
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco11.collidepoint(mPos):
+                import PACMAN
+        # Pong
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if buttonGioco12.collidepoint(mPos):
+                import Pong
+        
 
     # colora lo schermo
     screen.fill("oldlace")
