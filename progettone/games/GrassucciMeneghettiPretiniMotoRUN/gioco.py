@@ -16,7 +16,7 @@ pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(loops = -1)
 
 # impostazione sfondo
-imgSfondo = pygame.image.load("terreno3.png")
+imgSfondo = pygame.image.load("terreno.png")
 screen = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
 #titolo 
@@ -33,17 +33,17 @@ pygame.display.set_caption("MOTO RUN")
 
 #AGGIUNTA IMMAGINE GIOCATORE
 imgMoto = pygame.image.load("motoUfficiale.png")
-imgMoto = pygame.transform.scale(imgMoto,(100, 100))
+imgMoto = pygame.transform.scale(imgMoto,(80, 80))
 
 # AGGIUNTA IMMAGINI ENEMIES
 imgAlbero = pygame.image.load("alberoUfficiale.png")
-imgAlbero = pygame.transform.scale(imgAlbero,(70, 70))
+imgAlbero = pygame.transform.scale(imgAlbero,(50, 60))
 
 imgTrattore = pygame.image.load("trattoreUfficiale.png")
-imgTrattore = pygame.transform.scale(imgTrattore,(70,70))
+imgTrattore = pygame.transform.scale(imgTrattore,(60,60))
 
 imgMoneta = pygame.image.load("moneta.png")
-imgMoneta = pygame.transform.scale(imgMoneta,(70,70))
+imgMoneta = pygame.transform.scale(imgMoneta,(50,50))
 
 # TEMPO DI AGGIUNTA ENEMIES
 ADD_albero = pygame.USEREVENT + 1
