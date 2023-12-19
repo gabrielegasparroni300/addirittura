@@ -45,11 +45,11 @@ pygame.time.set_timer(ADD_ENEMY, 1000)
 enemies=[]
 
 
-imgSfondo = pygame.image.load("sfondo1(blu).png") 
+imgSfondo = pygame.image.load("space.png") 
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
-imgspaceship = pygame.image.load("spaceship1(violet).png") 
-imgspaceship = pygame.transform.scale(imgspaceship,(60,60))
+imgspaceship = pygame.image.load("spaceship.png") 
+imgspaceship = pygame.transform.scale(imgspaceship,(70,70))
 
 x = 0
 y = SCREEN_HEIGHT // 2
@@ -59,8 +59,8 @@ height = 30
 
 speed = 6
  
-imgMeteorite=pygame.image.load("meteorite1(giallo).png") 
-imgMeteorite = pygame.transform.scale(imgMeteorite,(40,40))
+imgMeteorite=pygame.image.load("meteorite.png") 
+imgMeteorite = pygame.transform.scale(imgMeteorite,(100,40))
 
 haiperso = False
 pausa = False
