@@ -8,8 +8,16 @@ pygame.init()
 
 pygame.mixer.init() 
 pygame.mixer.music.load("musica.mp3") 
-pygame.mixer.music.set_volume(0.3) 
+pygame.mixer.music.set_volume(0.1) 
 pygame.mixer.music.play()
+
+#timer
+sec = ""
+clock = pygame.time.Clock()
+contatore = 3
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+font = pygame.font.SysFont('Impact', 150)
+
 
 #grandezza schermo
 SCREEN_WIDTH = 800
@@ -19,15 +27,13 @@ SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) 
 pygame.display.set_caption("Pong")
 
-#font dei due palyer
+#font dei due player
 player1_font = pygame.font.SysFont('Impact', 30)
 player2_font = pygame.font.SysFont('Impact', 30)
 
 #
 player1Sfondo = player1_font.render("PLAYER 1", True, "blue","black")
 player2Sfondo = player2_font.render("PLAYER 2", True, "red","black")
-
-
 
 
 #sfondo
@@ -47,13 +53,13 @@ y2 = SCREEN_HEIGHT // 2
 
 #dimensioni rettangoli
 w = 10
-h = 40
+h = 80
 
 # velocità di spostamento rettangolo
-speed = 3
+speed = 5
 
 #velocità spostamento palla
-speed_palla = 3
+speed_palla = 2
 
 #direzioni casuali palla
 direction_x = [1, -1]
@@ -69,18 +75,31 @@ y = SCREEN_HEIGHT // 2
 # il nome del vincitore
 winner = ""
 
+#stato del gioco
+stato = "TIMER"
 running = True
 
 #per spostare i due giocatori 
-while running: 
-    pygame.time.delay(10) 
-
+while running:
+    pygame.time.delay(10)
+    if stato == "TIMER":
+        speed_palla = 0
+    
+    else:
+        speed_palla = 3
+        
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
-    
+        if event.type == pygame.USEREVENT:
+            sec = str(contatore).rjust(3) + " "   
+            if contatore <= 0:
+                stato = "GAMING"
+            contatore -= 1
+            
+        
     #tasti per lo spostamento 
     keys = pygame.key.get_pressed() 
     
@@ -94,7 +113,8 @@ while running:
     if keys[pygame.K_DOWN] and y2 < 580 - h: 
         y2 += speed 
 
-  
+    
+
     #lo schermo e invece di screen.fill("white") utilizzo un altro sfondo 
     screen.blit(imgSfondo,(0,0) )
 
@@ -125,6 +145,10 @@ while running:
     
     #disegno la pallina
     pallina = pygame.draw.circle(screen, "white", (x,y), 10)
+    
+    #schermata del timer
+    if stato == "TIMER":
+        screen.blit(font.render(sec, True, "black",(255 ,255, 255, 100)), (310, 225))
     
     
     
@@ -168,7 +192,8 @@ else:
     print("p2 win")
     
 screen.blit(img_win,(150, 100 ) )       
-pygame.display.flip()  
+pygame.display.flip()
+clock.tick(60)
 time.sleep(2.0)
 
 
