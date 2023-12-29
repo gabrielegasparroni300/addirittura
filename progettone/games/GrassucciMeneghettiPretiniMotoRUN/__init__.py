@@ -10,6 +10,8 @@ pygame.init()
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+clock = pygame.time.Clock()
+
 #AGGIUNTA SUONO IN LOOP
 pygame.mixer.init() 
 pygame.mixer.music.load("Honda CR 500 Sound Check Braaap!!!-0-16.9.mp3") 
@@ -17,7 +19,7 @@ pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(loops = -1)
 
 # AGGIUNTA TERRENO SULLO SFONDO
-imgSfondo = pygame.image.load("terreno.png")
+imgSfondo = pygame.image.load("terreno3.png")
 screen = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
 #FONT SCRITTE INIZIALI
@@ -56,6 +58,9 @@ pygame.time.set_timer(add_trattore, 800)
 add_moneta = pygame.USEREVENT + 1
 pygame.time.set_timer(add_moneta, 1000)
 
+#font del timer
+font_timer = pygame.font.SysFont('Rockwell Extra Bold', 50)
+
 
 # ELENCO NEMICI
 enemiesAlberi = []
@@ -71,14 +76,18 @@ w = 40
 h = 20
 
 # VELOCITA' GIOCATORE
-speed = 7
-superspeed = 14
+speed = 6
 
 
 # DEFINISCO RUNNING E SCRITTA COME "TRUE"
 running = True
 scritta = True
 pausa = True
+
+#prendo i due momenti iniziali
+tempo_corrente = 0
+tempo_iniziale = 0
+
 while running:
     pygame.time.delay(15)
     # GESTIONE X DI CHIUSURA
@@ -94,35 +103,36 @@ while running:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             scritta = False
             pausa = False
+            tempo_inziale = pygame.time.get_ticks()
             
         if pausa:
             continue
-        
+                
         # COMPARSA ALBERI  
         if event.type == ADD_albero:
-                posx_alberi = SCREEN_WIDTH - 20
-                posy_alberi = random.randint(0, SCREEN_HEIGHT - 75)
-                enemiesAlberi.append( (posx_alberi,posy_alberi) )
+            posx_alberi = SCREEN_WIDTH - 20
+            posy_alberi = random.randint(0, SCREEN_HEIGHT - 75)
+            enemiesAlberi.append( (posx_alberi,posy_alberi) )
         
         # COMPARSA TRATTORI
         if event.type == add_trattore:
-                posx_trattori = SCREEN_WIDTH - 20
-                while True:
-                    posy_trattori = random.randint(0, SCREEN_HEIGHT - 100)
-                    if posy_trattori > posy_alberi + 75 or posy_trattori < posy_alberi - 75:
-                        break
-                
-                enemiesTrattori.append( (posx_trattori,posy_trattori) )
+            posx_trattori = SCREEN_WIDTH - 20
+            while True:
+                posy_trattori = random.randint(0, SCREEN_HEIGHT - 100)
+                if posy_trattori > posy_alberi + 75 or posy_trattori < posy_alberi - 75:
+                    break
+            
+            enemiesTrattori.append( (posx_trattori,posy_trattori) )
         
         # COMPARSA MONETE
         if event.type == add_moneta:
-                posx_monete = SCREEN_WIDTH - 20
+            posx_monete = SCREEN_WIDTH - 20
+            posy_monete = random.randint(0, SCREEN_HEIGHT - 100)
+            while True:
                 posy_monete = random.randint(0, SCREEN_HEIGHT - 100)
-                while True:
-                    posy_monete = random.randint(0, SCREEN_HEIGHT - 100)
-                    if (posy_monete > posy_alberi + 75 or posy_monete < posy_alberi - 75) and (posy_monete > posy_trattori + 75 or posy_monete < posy_trattori - 75):
-                        break
-                enemiesMoneta.append( (posx_monete,posy_monete) )
+                if (posy_monete > posy_alberi + 75 or posy_monete < posy_alberi - 75) and (posy_monete > posy_trattori + 75 or posy_monete < posy_trattori - 75):
+                    break
+            enemiesMoneta.append( (posx_monete,posy_monete) )
       
        # PREMI "P" per mettere in pausa (o uscire dalla pausa)
         #if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
@@ -132,7 +142,10 @@ while running:
             #    if paused:
              #       paused = True
               #      pygame.mixer.music.pause(loops = -1)
-                
+    
+    #prendo il tempo corrente
+    tempo_corrente = pygame.time.get_ticks()
+    
     # MOVIMENTO GIOCATORE
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > 0: 
@@ -156,6 +169,11 @@ while running:
     # AGGIUNTA DIMENSIONI IMMAGINE SFONDO
     screen.blit(imgSfondo,(0,0) )
     
+    #comparsa del timer
+    if not pausa:
+        tempo = (tempo_corrente - tempo_iniziale)/1000
+        screen.blit(font_timer.render(str(tempo), True, "black"), (680, 25))
+    
     # DEFINISCO IL GIOCATORE
     player = screen.blit(imgMoto,(x,y))
     
@@ -167,7 +185,9 @@ while running:
         # SE IL GIOCATORE SI SCONTRA CON UN ALBERO RUNNING DIVENTA FALSE
         # E IL GIOCO FINISCE
         if player.colliderect(en):
-            print("HAI PERSO SCEMOOO!")
+            tempo_finale = pygame.time.get_ticks()
+            tempo = (tempo_finale - tempo_iniziale)/1000
+            print(tempo)
             running = False
     
     # APPARIZIONE TRATTORI
@@ -178,8 +198,12 @@ while running:
         # SE IL GIOCATORE SI SCONTRA CON UN TRATTORE RUNNING DIVENTA FALSE
         # E IL GIOCO FINISCE
         if player.colliderect(Trattore):
-            print("HAI PERSO SCEMOOO!")
+            tempo_finale = pygame.time.get_ticks()
+            tempo = (tempo_finale - tempo_iniziale)/1000
+            print(tempo)
             running = False
+            
+            
     # SE IL GIOCATORE COLPISCE LE MONETE LA VELOCITA' AUMENTA DI 1 E LA MONETA SCOMPARE
     for i in range(len(enemiesMoneta)):
         posx_monete,posy_monete = enemiesMoneta[i]
@@ -193,8 +217,8 @@ while running:
 
     # AGGIORNA IL CODICE
     pygame.display.flip()
+    clock.tick(60)
 
 # CHIUDE PYGAME
 pygame.quit()
-
 
