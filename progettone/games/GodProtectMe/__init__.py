@@ -32,8 +32,8 @@ Gameend1 = pygame.font.SysFont('Impact', 60)
 Gameend2 = pygame.font.SysFont('Impact', 50)
 
 score = 0
-top_left = (100, 100)
-top_right = (1300, 150)
+top_left = ((SCREEN_WIDTH * 100) / 1920, (SCREEN_HEIGHT * 100) / 1080)
+top_right = ((SCREEN_WIDTH * 1300) / 1920, (SCREEN_HEIGHT * 125) / 1080)
 
 title = Titlefont.render('God Protect Me', True,"#ffd700")
 click_to_play = Normalfont.render('Click "SPACE" to play', True, "#ffd700")
@@ -43,8 +43,8 @@ click_exit = Gameend2.render('Click "ESC" to exit', True, "black")
 
 #Player's base information
 
-base_width = 300
-base_height = 300
+base_width = (SCREEN_WIDTH * 300) / 1920
+base_height = (SCREEN_WIDTH * 300) / 1920
 
 base_x = SCREEN_WIDTH // 2 - base_width // 2
 base_y = SCREEN_HEIGHT // 2 - base_height // 2
@@ -53,7 +53,7 @@ base_image = pygame.image.load("playerBase.png")
 base_image = pygame.transform.scale(base_image, (base_width, base_height))
 
 hp = 1500
-health_bar = 500
+health_bar = (SCREEN_WIDTH * 500) / 1920
 
 mouse_icon = pygame.image.load("cursor.png")
 mouse_icon = pygame.transform.scale(mouse_icon, (40,40))
@@ -63,13 +63,14 @@ pygame.mouse.set_visible(False)
 spawn_point_x = SCREEN_WIDTH // 2
 spawn_point_y = SCREEN_HEIGHT // 2
 
-player_speed = 5
+player_pos_list = []
 
-player_width = 50
-player_height = 50
+player_speed = (SCREEN_WIDTH * 8) / 1920
 
-player_attack_area_x = 100
-player_attack_area_y = 100
+player_width = (SCREEN_WIDTH * 50) / 1920
+player_height = (SCREEN_WIDTH * 50) / 1920
+
+player_attack_radius = (SCREEN_WIDTH * 120) / 1920
 
 #Enemy's information
 
@@ -87,10 +88,10 @@ target_x = SCREEN_WIDTH // 2
 target_y = SCREEN_HEIGHT // 2
 
 enemy_image = pygame.image.load("enemy.png")
-enemy_image = pygame.transform.scale(enemy_image, (58, 56))
+enemy_image = pygame.transform.scale(enemy_image, ((SCREEN_WIDTH * 58) / 1920, (SCREEN_HEIGHT * 56) / 1080))
 
 dead_enemy_image = pygame.image.load("fulmine.png")
-dead_enemy_image = pygame.transform.scale(dead_enemy_image, (70, 100))
+dead_enemy_image = pygame.transform.scale(dead_enemy_image, ((SCREEN_WIDTH * 70) / 1920, (SCREEN_HEIGHT * 100) / 1080))
 
 #Level generation
 
@@ -99,10 +100,6 @@ running = True
 while running:
     
     pygame.time.delay(10)
-    
-    mouse_pos = pygame.mouse.get_pos()
-    mouse_icon_rect = mouse_icon.get_rect(topleft = (mouse_pos[0], mouse_pos[1]))
-    
 
     player_score = Highscore.render(f"Score: {score}", True, "#ffd700")
     
@@ -120,7 +117,7 @@ while running:
         
         #Adding random positions for the enemies far enough from the player's base to a list
         
-        if event.type == ADD_ENEMY:
+        if event.type == ADD_ENEMY and hp > 0:
             
             for times in range(30):
                 enemy_position_x = random.randint(-25, SCREEN_WIDTH + 25)
@@ -129,13 +126,16 @@ while running:
                 if MovementModule.is_on_screen(enemy_position_x, enemy_position_y, SCREEN_WIDTH, SCREEN_HEIGHT) == False:
                     enemy_list.append((enemy_position_x, enemy_position_y, 45, 60))
     
+    #Moving the player
+    spawn_point_x = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [0]
+    spawn_point_y = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [1]
+    
     #Using the positions from the list to spawn the enemies
     
     for i in range(len(enemy_list)):
-        enemy_rect = pygame.Rect(enemy_list[i][0], enemy_list[i][1], enemy_list[i][-2], enemy_list[i][-1])
         (x,y) = (enemy_list[i][0], enemy_list[i][1])
         
-        enemy_speed = random.randint(3, 8)
+        enemy_speed = random.randint((SCREEN_WIDTH * 3) // 1920, (SCREEN_HEIGHT * 7) // 1920)
         
         if hp <= 0:
             enemy_speed = 0
@@ -160,9 +160,9 @@ while running:
         enemy_list.pop(i)
         enemy_list.insert(i, (x,y))
         
-    #Checking for collisions between an enemy and the cursor
+    #Checking if an enemy is close enough to the player to be killed
         
-        if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
+        if MovementModule.is_in_range(spawn_point_x, spawn_point_y, x, y, player_attack_radius) == True:
             dead_enemy = enemy_list.pop(i)
             dead_enemy_list.append(dead_enemy)
             for x in range(180):
@@ -171,7 +171,7 @@ while running:
             break
 
     for stat in range(len(static_enemy_list)):
-        if pygame.mouse.get_pressed()[0] and mouse_icon_rect.colliderect(enemy_rect):
+        if MovementModule.is_in_range(spawn_point_x, spawn_point_y, static_enemy_list[stat][0], static_enemy_list[stat][1], player_attack_radius) == True:
             dead_enemy = static_enemy_list.pop(stat)
             dead_enemy_list.append(dead_enemy)
             for x in range(180):
@@ -192,18 +192,15 @@ while running:
         if hp == 0:
             break
         health_bar -= (health_bar * dmg) / hp
-    
-    #Moving the player
-    spawn_point_x = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [0]
-    spawn_point_y = MovementModule.move_player_1(spawn_point_x, spawn_point_y, player_speed) [1]
-    
-    player_attack_area = pygame.Rect(spawn_point_x - (player_width // 2), spawn_point_y - (player_height // 2), enemy_list[i][-2], enemy_list[i][-1])
-    
+        
     #Stoppping the game when the player loses all the health points
     
     if hp <= 0:
-        game_end = screen.blit(game_over, (SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2))
-        click_esc = screen.blit(click_exit, (SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2 + 80))
+        game_end = screen.blit(game_over, (SCREEN_WIDTH // 2 - (SCREEN_WIDTH * 130) / 1920, SCREEN_HEIGHT // 2))
+        click_esc = screen.blit(click_exit, (SCREEN_WIDTH // 2 - (SCREEN_WIDTH * 130) / 1920, SCREEN_HEIGHT // 2 + 80))
+        player_speed = 0
+        static_enemy_list.clear()
+        enemy_list.clear()
     
     player = pygame.draw.rect(screen, "blue", (spawn_point_x, spawn_point_y, player_width, player_height))
     
@@ -211,11 +208,9 @@ while running:
     
     score_text = screen.blit(player_score, top_left)
     
-    castle_damage_taken = pygame.draw.rect(screen, "#400101", (top_right[0], top_right[1], 500, 20))
+    castle_damage_taken = pygame.draw.rect(screen, "#400101", (top_right[0], top_right[1], (SCREEN_WIDTH * 500) / 1920, (SCREEN_HEIGHT * 20) / 1080))
     
-    castle_health_left = pygame.draw.rect(screen, "#e61919", (top_right[0], top_right[1], health_bar, 20))
-    
-    new_cursor = screen.blit(mouse_icon, mouse_pos)
+    castle_health_left = pygame.draw.rect(screen, "#e61919", (top_right[0], top_right[1], health_bar, (SCREEN_HEIGHT * 20) / 1080))
 
     #Updating and closing the game
 

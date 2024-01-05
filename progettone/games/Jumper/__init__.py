@@ -1,17 +1,13 @@
 # JUMPER
-# Matteo Domestico
-# Vincenzo Ricci
-# 2AS
 
-import pygame
-import random
-import time
+import pygame, random, time
 
 pygame.init()
 
 # ---------------------------------------------------------------
-# Variabili
+#Variables
 
+#Screen setup
 screen_x = 1000
 screen_y = 750
 
@@ -30,6 +26,7 @@ y4 = y
 x5 = x
 y5 = y
 
+#Dragons setup
 xD = 1000
 xD2 = xD
 xD3 = xD
@@ -51,9 +48,11 @@ height = 80
 speed = 2
 
 jump = False
-salto = 10
+salto = 8.55
 
 livello = 0
+
+dragon_counter = 0
 
 # ------------------------------------------------------------------------
 # immagini
@@ -128,12 +127,14 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
-    
-    
-    
+
     screen.fill("light blue")
 
 # -------------------------------------------------------------------
+
+    if y >= 40:
+        speed = 1.5
+
 # livello 1
     
     if livello == 0:
@@ -171,8 +172,6 @@ while running:
         if y - 95 < 0:
             livello = 1
         
-        
-        
         # -------------------------------------------------------------------------------
         # Sprite
         
@@ -202,7 +201,7 @@ while running:
         
         # Movimento drago
         xD -= speed * 5
-        
+            
         screen.blit(nuvolaChiara, (140, 510))
         screen.blit(nuvolaChiara, (490, 410))
         screen.blit(nuvolaChiara, (700, 310))
@@ -453,7 +452,7 @@ while running:
         screen.blit(Drago,(xDD3 - 110, yDD2))
         
         # Velocità del drago
-        xD3 -= speed * 10
+        xD3 -= speed * 8.3
         xDD3 -= speed * 6
         
         screen.blit(nuvolaScura, (screen_x // 2 - 10, 500))
@@ -655,4 +654,3 @@ while running:
     clock.tick(35)
     
 pygame.quit()
-

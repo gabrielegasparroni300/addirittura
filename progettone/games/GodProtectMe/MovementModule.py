@@ -81,3 +81,17 @@ def is_on_screen(pos_x, pos_y, screen_width, screen_height) -> bool:
         return False
     
     return True
+
+def is_in_range(pos_x_1, pos_y_1, pos_x_2, pos_y_2, max_distance) -> bool:
+    """Given the position of 2 objects and a max distance, the function returns a boolean telling if the objects are close enough to interact with eachother
+    """
+    
+    distance_x = pos_x_1 - pos_x_2
+    distance_y = pos_y_1 - pos_y_2
+    
+    distance_normal = ((distance_x ** 2) + (distance_y ** 2)) ** (1/2)
+    
+    if distance_normal > max_distance:
+        return False
+    if distance_normal <= max_distance:
+        return True
