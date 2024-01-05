@@ -24,16 +24,16 @@ def move_player_1(pos_x, pos_y, speed) -> tuple:
     
     if player_direction.x != 0 and player_direction.y != 0:
         if player_direction.x == 1 and player_direction.y == 1:
-            player_direction = pygame.Vector2(1 / (2 ** 1/2), 1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(1 / (2 ** 1/2), 1 / (2 ** (1/2)))
         
         if player_direction.x == 1 and player_direction.y == -1:
-            player_direction = pygame.Vector2(1 / (2 ** 1/2), -1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(1 / (2 ** 1/2), -1 / (2 ** (1/2)))
         
         if player_direction.x == -1 and player_direction.y == 1:
-            player_direction = pygame.Vector2(-1 / (2 ** 1/2), 1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(-1 / (2 ** 1/2), 1 / (2 ** (1/2)))
         
         if player_direction.x == -1 and player_direction.y == -1:
-            player_direction = pygame.Vector2(-1 / (2 ** 1/2), -1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(-1 / (2 ** 1/2), -1 / (2 ** (1/2)))
     
     return player_direction.x * speed + pos_x, player_direction.y * speed + pos_y
 
@@ -57,16 +57,16 @@ def move_player_2(pos_x, pos_y, speed) -> tuple:
     
     if player_direction.x != 0 and player_direction.y != 0:
         if player_direction.x == 1 and player_direction.y == 1:
-            player_direction = pygame.Vector2(1 / (2 ** 1/2), 1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(1 / (2 ** 1/2), 1 / (2 ** (1/2)))
         
         if player_direction.x == 1 and player_direction.y == -1:
-            player_direction = pygame.Vector2(1 / (2 ** 1/2), -1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(1 / (2 ** 1/2), -1 / (2 ** (1/2)))
         
         if player_direction.x == -1 and player_direction.y == 1:
-            player_direction = pygame.Vector2(-1 / (2 ** 1/2), 1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(-1 / (2 ** 1/2), 1 / (2 ** (1/2)))
         
         if player_direction.x == -1 and player_direction.y == -1:
-            player_direction = pygame.Vector2(-1 / (2 ** 1/2), -1 / (2 ** 1/2))
+            player_direction = pygame.Vector2(-1 / (2 ** 1/2), -1 / (2 ** (1/2)))
     
     return player_direction.x * speed + pos_x, player_direction.y * speed + pos_y
 
