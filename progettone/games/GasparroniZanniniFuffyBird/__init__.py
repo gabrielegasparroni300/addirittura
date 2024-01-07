@@ -68,7 +68,7 @@ while running:
             scritta = False
         if event.type == ADD_ENEMY:
             posx1 = SCREEN_WIDTH - 40
-            posy1 = 0#SCREEN_HEIGHT - 250
+            posy1 = 0 #SCREEN_HEIGHT - 250
             w1 = 40
             h1 = random.randint(50,250)
             enemies.append((posx1,posy1,w1,h1))

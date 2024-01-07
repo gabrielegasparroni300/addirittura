@@ -55,8 +55,6 @@ base_image = pygame.transform.scale(base_image, (base_width, base_height))
 hp = 1500
 health_bar = (SCREEN_WIDTH * 500) / 1920
 
-mouse_icon = pygame.image.load("cursor.png")
-mouse_icon = pygame.transform.scale(mouse_icon, (40,40))
 pygame.mouse.set_visible(False)
 
 #Player Info
@@ -67,10 +65,13 @@ player_pos_list = []
 
 player_speed = (SCREEN_WIDTH * 8) / 1920
 
-player_width = (SCREEN_WIDTH * 50) / 1920
-player_height = (SCREEN_WIDTH * 50) / 1920
+player_width = (SCREEN_WIDTH * 95) / 1920
+player_height = (SCREEN_WIDTH * 135) / 1920
 
 player_attack_radius = (SCREEN_WIDTH * 120) / 1920
+
+player_image = pygame.image.load("personaggio.png")
+player_image = pygame.transform.scale(player_image, (player_width, player_height))
 
 #Enemy's information
 
@@ -87,7 +88,7 @@ dead_enemy_list = []
 target_x = SCREEN_WIDTH // 2
 target_y = SCREEN_HEIGHT // 2
 
-enemy_image = pygame.image.load("enemy.png")
+enemy_image = pygame.image.load("bomba.png")
 enemy_image = pygame.transform.scale(enemy_image, ((SCREEN_WIDTH * 58) / 1920, (SCREEN_HEIGHT * 56) / 1080))
 
 dead_enemy_image = pygame.image.load("fulmine.png")
@@ -202,7 +203,7 @@ while running:
         static_enemy_list.clear()
         enemy_list.clear()
     
-    player = pygame.draw.rect(screen, "blue", (spawn_point_x, spawn_point_y, player_width, player_height))
+    player = screen.blit(player_image, (spawn_point_x, spawn_point_y))
     
     #Adding all of the HUD elements
     
