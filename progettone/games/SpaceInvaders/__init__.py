@@ -19,7 +19,7 @@ pygame.display.set_caption("Invasori Spaziali")
 
 # nemici
 ADD_ENEMY = pygame.USEREVENT + 1
-pygame.time.set_timer(ADD_ENEMY, 10000)
+pygame.time.set_timer(ADD_ENEMY, 2000)
 
 enemies = []
 
@@ -53,7 +53,7 @@ y = SCREEN_HEIGHT // 2 + 250
 w = 10
 h = 10
 
-speedx = 5
+speedx = 6
 speedy = 4
 
 laserenem = True
@@ -73,16 +73,8 @@ enemyBullets = []
 while running: 
     pygame.time.delay(5)
     
-    
-    
-
-   
-    
 #     screen.blit(imgSfondo, (0,0))
 #     player = screen.blit(imgNave, (x,y))
-    
-    
-
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             running = False
@@ -161,7 +153,7 @@ while running:
             yBEnemies = posy
             xBEnemies = random.randint(100,1100)
             
-            if len(enemyBullets) < 1:
+            if len(enemyBullets) < 2:
                 enemyBullets.append( (xBEnemies, yBEnemies) )
             
             
