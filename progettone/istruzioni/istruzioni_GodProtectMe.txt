@@ -1,4 +1,4 @@
-Ti puoi muovere con le W, A, S, D
+Puoi muovere con le W, A, S, D lo scheletro
 Devi prendere le bombe per salvare il castello
 Se arrivano tutte le bombe nel castello, muori
 Premi ESC per uscire
