@@ -2,9 +2,7 @@
 
 # di Leonardo Della Bella e Lorenzo Fraternale
 
-import pygame   
-import random
-import time
+import pygame, random, time
 
 conta = 0
 

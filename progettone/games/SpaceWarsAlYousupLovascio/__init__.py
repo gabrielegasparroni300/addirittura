@@ -4,8 +4,8 @@
 
 
 # Importiamo i moduli necessari per il gioco, in questo caso il modulo random e pygame
-import pygame
-import random
+import pygame, random
+import MovementModule
 
 pygame.init()
 
@@ -43,9 +43,9 @@ x = SCREEN_WIDTH // 2
 y = SCREEN_HEIGHT // 2
 
 # Definiamo le dimensioni dell'astronave e la sua velocità di movimento
-w = 65
+w = 80
 h = 65
-speed = 6
+speed = 4
 
 # Definiamo le dimensioni degli avversari e la loro velocità di movimento (iniziale)
 enemy_width = 40
@@ -150,7 +150,7 @@ while menu:
                                 enemies.append(pygame.Rect(posx, posy, enemy_width, enemy_height))                        
                     # Se viene premuto il tasto SPAZIO e il gioco non è terminato, aggiungiamo un colpo alla lista degli oggetti sparati
                     if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and not game_over:
-                        shots.append(pygame.Rect(x + w // 2 - 2, y, 7, 14))
+                        shots.append(pygame.Rect(x + w // 2 - 2, y, 10, 15))
                         # Aggiungiamo la musica per i colpi sparati
                         pygame.mixer.init()
                         pygame.mixer.music.load("suonocolpo.mp3")
@@ -181,6 +181,9 @@ while menu:
                     if enemy.y > SCREEN_HEIGHT:
                             enemies.remove(enemy)
                             score -= 1
+                    
+                    if score < 0:
+                        game_over = True
 
                     # Se l'astronave del giocatore collide con un avversario, il gioco termina
                     if enemy.colliderect(pygame.Rect(x, y, w, h)):
@@ -216,7 +219,7 @@ while menu:
                 # Gestiamo i colpi sparati
                 for shot in shots:
                     pygame.draw.rect(screen, "blue", shot)
-                    shot.y -= speed
+                    shot.y -= speed * 1.3
 
                     # Controlliamo se un colpo colpisce un avversario
                     for enemy in enemies:
