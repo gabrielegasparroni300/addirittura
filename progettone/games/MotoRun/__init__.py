@@ -19,7 +19,7 @@ pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(loops = -1)
 
 # AGGIUNTA TERRENO SULLO SFONDO
-imgSfondo = pygame.image.load("terreno3.png")
+imgSfondo = pygame.image.load("terreno.png")
 screen = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
 #FONT SCRITTE INIZIALI
