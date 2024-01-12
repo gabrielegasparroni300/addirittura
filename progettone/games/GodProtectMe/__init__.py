@@ -66,7 +66,7 @@ player_pos_list = []
 player_speed = (SCREEN_WIDTH * 8) / 1920
 
 player_width = (SCREEN_WIDTH * 95) / 1920
-player_height = (SCREEN_WIDTH * 135) / 1920
+player_height = (SCREEN_WIDTH * 135) / 1080
 
 player_attack_radius = (SCREEN_WIDTH * 120) / 1920
 
@@ -203,9 +203,13 @@ while running:
         static_enemy_list.clear()
         enemy_list.clear()
     
-    player = screen.blit(player_image, (spawn_point_x, spawn_point_y))
+    circle = pygame.Surface((player_attack_radius * 2, player_attack_radius * 2), pygame.SRCALPHA) 
     
-    #Adding all of the HUD elements
+    screen.blit(circle, (spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
+    
+    player = screen.blit(player_image, (spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
+    
+    #Adding all of the UI elements
     
     score_text = screen.blit(player_score, top_left)
     
