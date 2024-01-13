@@ -38,7 +38,7 @@ close2_tip=Normalfont.render("Click Right to continue the game", True, "blue","c
 
 
 ADD_ENEMY = pygame.USEREVENT + 1
-pygame.time.set_timer(ADD_ENEMY, 1000)
+pygame.time.set_timer(ADD_ENEMY,400)
 
 enemies=[]
 
@@ -105,7 +105,7 @@ while running:
         x += speed
         if haiperso == True:
             pygame.mixer.music.play()
-            running = True
+            running = False
             haiperso = False
     if keys[pygame.K_UP] and y > 0: 
         y -= speed 
@@ -125,8 +125,8 @@ while running:
             screen.blit(close1_tip, (100,300))
             screen.blit(close2_tip, (350,300))
             #screen.blit(time_game, (500,20))
-            haiperso = True
-            #running = False
+#             haiperso = True
+            running = False
             break
         posx -= 5
         enemies[i] = posx,posy
