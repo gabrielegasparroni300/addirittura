@@ -65,13 +65,23 @@ player_pos_list = []
 
 player_speed = (SCREEN_WIDTH * 8) / 1920
 
-player_width = (SCREEN_WIDTH * 95) / 1920
-player_height = (SCREEN_WIDTH * 135) / 1080
-
 player_attack_radius = (SCREEN_WIDTH * 120) / 1920
+
+player_width = player_attack_radius
+player_height = player_attack_radius
 
 player_image = pygame.image.load("personaggio.png")
 player_image = pygame.transform.scale(player_image, (player_width, player_height))
+
+w = player_attack_radius
+h = player_attack_radius
+
+surf = pygame.Surface((w, h), pygame.SRCALPHA)
+alpha_surface = pygame.Surface(surf.get_size(), pygame.SRCALPHA)
+player_attack_area = pygame.draw.circle(surf, "red", (w // 2,h // 2), w // 2)
+alpha_surface.fill((255, 255, 255, 80))
+surf.blit(alpha_surface, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+
 
 #Enemy's information
 
@@ -120,7 +130,7 @@ while running:
         
         if event.type == ADD_ENEMY and hp > 0:
             
-            for times in range(30):
+            for times in range(random.randint(30, 50)):
                 enemy_position_x = random.randint(-25, SCREEN_WIDTH + 25)
                 enemy_position_y = random.randint(-25, SCREEN_HEIGHT + 25)
             
@@ -203,9 +213,7 @@ while running:
         static_enemy_list.clear()
         enemy_list.clear()
     
-    circle = pygame.Surface((player_attack_radius * 2, player_attack_radius * 2), pygame.SRCALPHA) 
-    
-    screen.blit(circle, (spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
+    circle = screen.blit(surf,(spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
     
     player = screen.blit(player_image, (spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
     
