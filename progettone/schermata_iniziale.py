@@ -91,63 +91,63 @@ while running:
         # Jumper
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco1.collidepoint(mPos):
-                # from games import Jumper
-                os.startfile(istrJumper)
+                from games import Jumper
+                
         # Space Something
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco2.collidepoint(mPos):
-                # from games import SpaceSomethingMazzariniWang
-                os.startfile(istrSpaceSomething)
+                from games import SpaceSomethingMazzariniWang
+
         # Space wars
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco3.collidepoint(mPos):
-                # from games import SpaceWarsAlYousupLovascio
-                os.startfile(istrSpaceWars)
+                from games import SpaceWarsAlYousupLovascio
+
         # God protect me
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco4.collidepoint(mPos):
-                # from games import GodProtectMe
-                os.startfile(istrGodProtectMe)
+                from games import GodProtectMe
+                
         # Space invaders
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco5.collidepoint(mPos):
-                # from games import BellaBellaFraternaleSpaceInvaders
-                os.startfile(istrSpaceInvaders)
+                from games import BellaBellaFraternaleSpaceInvaders
+                
         # Money catcher
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco6.collidepoint(mPos):
-                # from games import BruschiFrontaliniMoneyCatcher
-                os.startfile(istrMoneyCatcher)
+                from games import BruschiFrontaliniMoneyCatcher
+                
         # Slot
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco7.collidepoint(mPos):
-                # from games import DraghettiGiacchèSlot
-                os.startfile(istrSlot)
+                from games import DraghettiGiacchèSlot
+                
         # Fuffy bird
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco8.collidepoint(mPos):
-                # from games import GasparroniZanniniFuffyBird
-                os.startfile(istrFuffyBird)
+                from games import GasparroniZanniniFuffyBird
+                
         # SuperSpace
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco9.collidepoint(mPos):
-                # from games import GjuziKhalilpourSuperSpace
-                os.startfile(istrSuperSpace)
+                from games import GjuziKhalilpourSuperSpace
+                
         # MotoRUN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco10.collidepoint(mPos):
-                # from games import GrassucciMeneghettiPretiniMotoRUN
-                os.startfile(istrMotoRUN)
+                from games import GrassucciMeneghettiPretiniMotoRUN
+                
         # PACMAN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco11.collidepoint(mPos):
-                # from games import MingoTittarelliPacman
-                os.startfile(istrPacman)
+                from games import MingoTittarelliPacman
+                
         # Pong
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco12.collidepoint(mPos):
-                # from games import ZamponiPong
-                os.startfile(istrPong)
+                from games import ZamponiPong
+                
         
 
     # colora lo schermo
