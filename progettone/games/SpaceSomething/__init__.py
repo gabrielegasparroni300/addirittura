@@ -4,8 +4,8 @@
 # JIA LING WANG
 # ARNAU MAZZARINI
 
-# Importiamo i moduli pygame e random
-import pygame, random
+# Importiamo i moduli pygame, random e os
+import pygame, random, os
 
 # Importiamo i vari tasti della tastiera
 from pygame.locals import (
@@ -30,9 +30,8 @@ from pygame.locals import (
 pygame.init()
 
 # MUSICA SOTTOFONDO
-pygame.mixer.init()
-
-pygame.mixer.music.load("Spaceinvaders.mpeg")
+music_path = os.path.join(os.path.dirname(__file__), "Spaceinvaders.mpeg")
+music = pygame.mixer.music.load(music_path)
 pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.play()
 
@@ -44,7 +43,8 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 pygame.display.set_caption("Space something")
 
-imgSfondo = pygame.image.load("Spazio3.png")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "Spazio3.png")
+imgSfondo = pygame.image.load(imgSfondo_path)
 imgSfondo = pygame.transform.scale(imgSfondo, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # POSIZIONE INIZIALE PLAYER
@@ -73,11 +73,13 @@ speed = 20
 #---------------------------------------------
 # GAMING
 # player1
-img_navicella1 = pygame.image.load("Navicella1.png")
+img_navicella1_path = os.path.join(os.path.dirname(__file__), "Navicella1.png")
+img_navicella1 = pygame.image.load(img_navicella1_path)
 img_navicella1 = pygame.transform.scale(img_navicella1, (w1, h1))
 
 # player2
-img_navicella2 = pygame.image.load("Navicella2.png")
+img_navicella2_path = os.path.join(os.path.dirname(__file__), "Navicella2.png")
+img_navicella2 = pygame.image.load(img_navicella2_path)
 img_navicella2 = pygame.transform.scale(img_navicella2, (w2, h2))
 
 # BULLET
@@ -87,14 +89,16 @@ bullets1 = []
 bullets2 = []
 
 # BULLET SOUND
-
-bullet_SOUND = pygame.mixer.Sound("Bullet_sound.wav")
+bullet_SOUND_path = os.path.join(os.path.dirname(__file__), "Bullet_sound.wav")
+bullet_SOUND = pygame.mixer.Sound(bullet_SOUND_path)
 pygame.mixer.Sound.set_volume(bullet_SOUND , 0.1)
 
-bullet_IMPACT = pygame.mixer.Sound("Bullet_impact.wav")
+bullet_IMPACT_path = os.path.join(os.path.dirname(__file__), "Bullet_impact.wav")
+bullet_IMPACT = pygame.mixer.Sound(bullet_IMPACT_path)
 pygame.mixer.Sound.set_volume(bullet_IMPACT , 0.1)
 
-player_explosion = pygame.mixer.Sound("Explosion.wav")
+player_explosion_path = os.path.join(os.path.dirname(__file__), "Explosion.wav")
+player_explosion = pygame.mixer.Sound(player_explosion_path)
 pygame.mixer.Sound.set_volume(player_explosion, 0.5)
 
 # LIFE
@@ -103,7 +107,8 @@ vita2 = 10
 
 
 #RICARICHE
-ricarica_SOUND = pygame.mixer.Sound("Suono_ricarica.mp3")
+ricarica_SOUND_path = os.path.join(os.path.dirname(__file__), "Suono_ricarica.mp3")
+ricarica_SOUND = pygame.mixer.Sound(ricarica_SOUND_path)
 pygame.mixer.Sound.set_volume(ricarica_SOUND, 0.8)
 
 # SPAWN RICARICA FOR  PLAYER1 
@@ -122,19 +127,28 @@ ricariche2 = []
 
 
 #ricarica1
-img_ricarica1 = pygame.image.load("Ricarica.png")
+img_ricarica1_path = os.path.join(os.path.dirname(__file__), "Ricarica.png")
+img_ricarica1 = pygame.image.load(img_ricarica1_path)
 img_ricarica1 = pygame.transform.scale(img_ricarica1, (40, 40))
 
 #ricarica2
-img_ricarica2 = pygame.image.load("Ricarica.png")
+img_ricarica2_path = os.path.join(os.path.dirname(__file__), "Ricarica.png")
+img_ricarica2 = pygame.image.load(img_ricarica2_path)
 img_ricarica2 = pygame.transform.scale(img_ricarica2, (40, 40))
 
 #--------------------------
 #SCRITTE
-font = pygame.font.Font("retro_computer_personal_use.ttf" ,40)
-font1 = pygame.font.Font("Early GameBoy.ttf" ,60)
-font2 = pygame.font.Font("Early GameBoy.ttf" ,80)
-font3 = pygame.font.Font("retro_computer_personal_use.ttf" ,40)
+font_path = os.path.join(os.path.dirname(__file__), "retro_computer_personal_use.ttf")
+font = pygame.font.Font(font_path ,40)
+
+font1_path = os.path.join(os.path.dirname(__file__), "Early GameBoy.ttf")
+font1 = pygame.font.Font(font1_path ,60)
+
+font2_path = os.path.join(os.path.dirname(__file__), "Early GameBoy.ttf")
+font2 = pygame.font.Font(font2_path ,80)
+
+font3_path = os.path.join(os.path.dirname(__file__), "retro_computer_personal_use.ttf")
+font3 = pygame.font.Font(font3_path ,40)
 
 
 TITOLO1 = font2.render('SPACE' , True , "white")
@@ -167,26 +181,32 @@ BOTTONE_RESTART_P = pygame.Rect(SCREEN_WIDTH // 2 -115 , SCREEN_HEIGHT //2 - 50 
 stato = "STARTING"
 
 # SFONDO MENU
-img_STARTING = pygame.image.load("Spazio4.png")
+img_STARTING_path = os.path.join(os.path.dirname(__file__), "Spazio4.png")
+img_STARTING = pygame.image.load(img_STARTING_path)
 img_STARTING = pygame.transform.scale(img_STARTING, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 BOTTONE_START = pygame.Rect(200, SCREEN_HEIGHT //2 - 50 , 180, 50)
 BOTTONE_QUIT = pygame.Rect( 200, SCREEN_HEIGHT //2 + 50  , 150, 50)
 
-img_wasd = pygame.image.load("WASD.png")
+img_wasd_path = os.path.join(os.path.dirname(__file__), "WASD.png")
+img_wasd = pygame.image.load(img_wasd_path)
 img_wasd  = pygame.transform.scale(img_wasd, (205, 205 ))
 
-img_arrow = pygame.image.load("ARROW.png")
+img_arrow_path = os.path.join(os.path.dirname(__file__), "ARROW.png")
+img_arrow = pygame.image.load(img_arrow_path)
 img_arrow   = pygame.transform.scale(img_arrow , (205, 205 ))
 
-img_backspace =  pygame.image.load("BACKSPACE.png")
+img_backspace_path = os.path.join(os.path.dirname(__file__), "BACKSPACE.png")
+img_backspace =  pygame.image.load(img_backspace_path)
 img_backspace  = pygame.transform.scale(img_backspace, (220, 220 ))
 
-img_navicella3 = pygame.image.load("Navicella1.png")
+img_navicella3_path = os.path.join(os.path.dirname(__file__), "Navicella1.png")
+img_navicella3 = pygame.image.load(img_navicella3_path)
 img_navicella3 = pygame.transform.scale(img_navicella3, (120, 113 ))
 img_navicella3 = pygame.transform.rotate(img_navicella3, 90 )
 
-img_navicella4 = pygame.image.load("Navicella2.png")
+img_navicella4_path = os.path.join(os.path.dirname(__file__), "Navicella2.png")
+img_navicella4 = pygame.image.load(img_navicella4_path)
 img_navicella4 = pygame.transform.scale(img_navicella4, (120, 113 ) )
 img_navicella4 = pygame.transform.rotate(img_navicella4, 270 )
 
@@ -195,22 +215,29 @@ img_navicella4 = pygame.transform.rotate(img_navicella4, 270 )
 BOTTONE_QUIT_M = pygame.Rect((SCREEN_WIDTH // 4)*2.5, SCREEN_HEIGHT //2 , 150, 50)
 BOTTONE_RESTART = pygame.Rect(SCREEN_WIDTH // 4, SCREEN_HEIGHT //2 ,  230, 50)
 
-img_coppa = pygame.image.load("COPPA.png")
+img_coppa_path = os.path.join(os.path.dirname(__file__), "COPPA.png")
+img_coppa = pygame.image.load(img_coppa_path)
 img_coppa = pygame.transform.scale(img_coppa, (200, 200 ) )
 
 #---------------------------------
 # SCHERMO
 bottone_PAUSA = pygame.Rect(SCREEN_WIDTH // 2 - 29  , 24 , 45 , 45 )
 
-img_pausa = pygame.image.load("PAUSA3.png")
-img_pausa_active = pygame.image.load("PAUSA4.png")
+img_pausa_path = os.path.join(os.path.dirname(__file__), "PAUSA3.png")
+img_pausa = pygame.image.load(img_pausa_path)
+
+img_pausa_active_path = os.path.join(os.path.dirname(__file__), "PAUSA4.png")
+img_pausa_active = pygame.image.load(img_pausa_active_path)
+
 img_pausa  = pygame.transform.scale(img_pausa, (60 , 60 ))
 img_pausa_active = pygame.transform.scale(img_pausa_active , (60 , 60 ))
 
-img_cornice = pygame.image.load("CORNICE.png")
+img_cornice_path = os.path.join(os.path.dirname(__file__), "CORNICE.png")
+img_cornice = pygame.image.load(img_cornice_path)
 img_cornice  = pygame.transform.scale(img_cornice, (1000, 700 ))
 
-img_interno =pygame.image.load("INTERNO1.png").convert_alpha()
+img_interno_path =os.path.join(os.path.dirname(__file__), "INTERNO1.png")
+img_interno =pygame.image.load(img_interno_path).convert_alpha()
 img_interno = pygame.transform.scale(img_interno, (1000 , 700 ))
 img_interno.set_alpha(10)
 

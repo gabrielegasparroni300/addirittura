@@ -96,12 +96,12 @@ while running:
         # Space Something
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco2.collidepoint(mPos):
-                from games import SpaceSomethingMazzariniWang
+                from games import SpaceSomething
 
         # Space wars
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco3.collidepoint(mPos):
-                from games import SpaceWarsAlYousupLovascio
+                from games import SpaceWars
 
         # God protect me
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -111,42 +111,42 @@ while running:
         # Space invaders
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco5.collidepoint(mPos):
-                from games import BellaBellaFraternaleSpaceInvaders
+                from games import SpaceInvaders
                 
         # Money catcher
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco6.collidepoint(mPos):
-                from games import BruschiFrontaliniMoneyCatcher
+                from games import MoneyCatcher
                 
         # Slot
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco7.collidepoint(mPos):
-                from games import DraghettiGiacchèSlot
+                from games import Slot
                 
         # Fuffy bird
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco8.collidepoint(mPos):
-                from games import GasparroniZanniniFuffyBird
+                from games import FuffyBird
                 
         # SuperSpace
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco9.collidepoint(mPos):
-                from games import GjuziKhalilpourSuperSpace
+                from games import SuperSpace
                 
         # MotoRUN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco10.collidepoint(mPos):
-                from games import GrassucciMeneghettiPretiniMotoRUN
+                from games import MotoRun
                 
         # PACMAN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco11.collidepoint(mPos):
-                from games import MingoTittarelliPacman
+                from games import Pacman
                 
         # Pong
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco12.collidepoint(mPos):
-                from games import ZamponiPong
+                from games import Pong
                 
         
 
