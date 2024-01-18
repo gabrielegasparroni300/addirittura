@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import os
 
 pygame.init()
 
@@ -34,9 +35,12 @@ vincita = ""
 #scritte fisse
 credito = Normalfont.render("CREDITO:", True , "yellow")
 # avvertenze = pygame.image.load("black2.jpg")
-avvertenze = pygame.image.load("Avvertenze_nuovo.png")
-Fine = pygame.image.load("Finale.jpg")
-vittoria999 = pygame.image.load("Schermata_di_vincita.png")
+avvertenze_path = os.path.join(os.path.dirname(__file__), "Avvertenze_nuovo.png")
+avvertenze = pygame.image.load(avvertenze_path)
+Fine_path = os.path.join(os.path.dirname(__file__), "Finale.jpg")
+Fine = pygame.image.load(Fine_path)
+vittoria999_path = os.path.join(os.path.dirname(__file__), "Schermata_di_vincita.png")
+vittoria999 = pygame.image.load(vittoria999_path)
 istruzioniSpazio = Normalfont.render('_Space_ : Gioca' , True , 'yellow')
 istruzioniEsc = Normalfont.render('_Escape_ : Cash Out' , True , 'yellow')
 # attenzione = Normalfont.render('Attenzione\nIl Gioco Può Creare\nDipendenza' , True , "yellow")
@@ -49,12 +53,14 @@ paused = False
 
 
 #immagini e audio
-imgSfondo = pygame.image.load("slot.jpg")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "slot.jpg")
+imgSfondo = pygame.image.load(imgSfondo_path)
 
 
-pygame.mixer.init() 
-pygame.mixer.music.load("gamemusic-6082.mp3") 
-pygame.mixer.music.set_volume(0.7) 
+pygame.mixer.init()
+music_path = os.path.join(os.path.dirname(__file__), "gamemusic-6082.mp3")
+pygame.mixer.music.load(music_path)
+pygame.mixer.music.set_volume(0.7)
 pygame.mixer.music.play(loops = -1)
 
 

@@ -2,13 +2,14 @@
 # 2 BS
 # Gioco con python
 
-import pygame, random , time
+import pygame, random, time, os
 
 pygame.init()
 
-pygame.mixer.init() 
-pygame.mixer.music.load("musica.mp3") 
-pygame.mixer.music.set_volume(0.1) 
+pygame.mixer.init()
+musica_path = os.path.join(os.path.dirname(__file__), "musica.mp3")
+pygame.mixer.music.load(musica_path)
+pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.play()
 
 #timer
@@ -37,7 +38,8 @@ player2Sfondo = player2_font.render("PLAYER 2", True, "red","black")
 
 
 #sfondo
-imgSfondo = pygame.image.load("N.jpeg") 
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "N.jpeg") 
+imgSfondo = pygame.image.load(imgSfondo_path) 
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
     
@@ -185,10 +187,12 @@ while running:
 
 # il ciclo inizia se P1 o P2 hanno vinto
 if winner == "P1":
-    img_win = pygame.image.load("P1.png")
+    img_win_path = os.path.join(os.path.dirname(__file__), "P1.png")
+    img_win = pygame.image.load(img_win_path)
     print("p1 win")       
 else:
-    img_win = pygame.image.load("P2.png") 
+    img_win_path = os.path.join(os.path.dirname(__file__), "P2.png") 
+    img_win = pygame.image.load(img_win_path) 
     print("p2 win")
     
 screen.blit(img_win,(150, 100 ) )       

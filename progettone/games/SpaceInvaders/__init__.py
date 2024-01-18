@@ -2,7 +2,7 @@
 
 # di Leonardo Della Bella e Lorenzo Fraternale
 
-import pygame, random, time
+import pygame, random, time, os
 
 conta = 0
 
@@ -22,17 +22,26 @@ pygame.time.set_timer(ADD_ENEMY, 2000)
 enemies = []
 
 # immagini
-imgSfondo = pygame.image.load("pixelstars1.jpg")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "pixelstars1.jpg")
+imgSfondo = pygame.image.load(imgSfondo_path)
 imgSfondo = pygame.transform.scale(imgSfondo, (SCREEN_WIDTH, SCREEN_HEIGHT))
-imgNave = pygame.image.load("pixelnavicella1.png") 
+
+imgNave_path = os.path.join(os.path.dirname(__file__), "pixelnavicella1.png")
+imgNave = pygame.image.load(imgNave_path) 
 imgNave = pygame.transform.scale(imgNave,(100,100))
-imgNemico = pygame.image.load("navicellaCattiva1.png") 
+
+imgNemico_path = os.path.join(os.path.dirname(__file__), "navicellaCattiva1.png") 
+imgNemico = pygame.image.load(imgNemico_path) 
 imgNemico = pygame.transform.scale(imgNemico,(85,85))
 
 
-#
-Titlefont = pygame.font.Font('PublicPixel-z84yD.ttf', 30)
-Normalfont = pygame.font.Font('PublicPixel-z84yD.ttf', 10)
+# i font
+Titlefont_path = os.path.join(os.path.dirname(__file__), 'PublicPixel-z84yD.ttf')
+Titlefont = pygame.font.Font(Titlefont_path, 30)
+
+Normalfont_path = os.path.join(os.path.dirname(__file__), 'PublicPixel-z84yD.ttf')
+Normalfont = pygame.font.Font(Normalfont_path, 10)
+
 
 game_start = Titlefont.render('Premi "SPAZIO" per iniziare', True, "grey")
 
@@ -40,8 +49,9 @@ Punteggio = Titlefont.render(f'Punteggio:{conta}', True, "red")
 Sconfitta = Titlefont.render(f'Hai Perso', True, "red")
 
 #
-pygame.mixer.init() 
-pygame.mixer.music.load("laser.mp3") 
+pygame.mixer.init()
+suonoLaser_path = os.path.join(os.path.dirname(__file__), "laser.mp3")
+pygame.mixer.music.load(suonoLaser_path) 
 pygame.mixer.music.set_volume(0.5) 
 
 #
