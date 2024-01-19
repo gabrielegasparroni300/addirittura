@@ -5,13 +5,15 @@
 # importa ed inizializza la libreria pygame
 import pygame
 import random
+import os
 
 pygame.init()
 
 #parte dove si programma la musica
-pygame.mixer.init() 
-pygame.mixer.music.load("PacManSong.mp3") 
-pygame.mixer.music.set_volume(0.5) 
+pygame.mixer.init()
+music_path = os.path.join(os.path.dirname(__file__), "PacManSong.mp3")
+pygame.mixer.music.load(music_path)
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play()
 
 #posizione iniziale
@@ -33,8 +35,10 @@ screen = pygame.display.set_mode( (SCREEN_WIDTH, SCREEN_HEIGHT) )
 pygame.display.set_caption("PacMan tarocco")
 
 #inserimento immagine di Pac Man
-imgPacMan = pygame.image.load("PacMan2.png")
-imgPacManUpDw = pygame.image.load("PacMan.png")
+imgPacMan_path = os.path.join(os.path.dirname(__file__), "PacMan2.png")
+imgPacMan = pygame.image.load(imgPacMan_path)
+imgPacManUpDw_path = os.path.join(os.path.dirname(__file__), "PacMan.png")
+imgPacManUpDw = pygame.image.load(imgPacManUpDw_path)
 
 #ridimensionamento immagini di PacMan per tutte le direzioni
 imgPacManDx = pygame.transform.scale(imgPacMan,(42,42))
@@ -62,9 +66,12 @@ uscita = punti.render("Premi ESC per uscire",True,"white")
 #
 #------------------------------------------------------------------------
 #immagine fantasmino ridimensioni
-fantasmino1 = pygame.image.load("fantasmino.png")
-fantasmino2 = pygame.image.load("fantasmino_azzurro.png")
-fantasmino3 = pygame.image.load("fantasmino_arancione.png")
+fantasmino1_path = os.path.join(os.path.dirname(__file__), "fantasmino.png")
+fantasmino1 = pygame.image.load(fantasmino1_path)
+fantasmino2_path = os.path.join(os.path.dirname(__file__), "fantasmino_azzurro.png")
+fantasmino2 = pygame.image.load(fantasmino2_path)
+fantasmino3_path = os.path.join(os.path.dirname(__file__), "fantasmino_arancione.png")
+fantasmino3 = pygame.image.load(fantasmino3_path)
 
 imgFantasma1 = pygame.transform.scale(fantasmino1,(50,50))
 imgFantasma2 = pygame.transform.scale(fantasmino2,(50,50))

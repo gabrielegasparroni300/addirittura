@@ -3,9 +3,8 @@
 # 2°AS
 
 
-# Importiamo i moduli necessari per il gioco, in questo caso il modulo random e pygame
-import pygame, random
-import MovementModule
+# Importiamo i moduli necessari per il gioco, in questo caso random, pygame e os
+import pygame, random, os
 
 pygame.init()
 
@@ -26,16 +25,20 @@ enemies = []
 shots = []
 specialenemies = []
 # Carichiamo le immagini dello sfondo, dell' astronave e dei nemici
-imgSfondo = pygame.image.load("sfondo.jpg")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "sfondo.jpg")
+imgSfondo = pygame.image.load(imgSfondo_path)
 imgSfondo = pygame.transform.scale(imgSfondo, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-imgAstronave = pygame.image.load("astronave.jpg")
+imgAstronave_path = os.path.join(os.path.dirname(__file__), "astronave.jpg")
+imgAstronave = pygame.image.load(imgAstronave_path)
 imgAstronave = pygame.transform.scale(imgAstronave, (80, 80))
 
-imgNemici = pygame.image.load("nemici.jpg")
+imgNemici_path = os.path.join(os.path.dirname(__file__), "nemici.jpg")
+imgNemici = pygame.image.load(imgNemici_path)
 imgNemici = pygame.transform.scale(imgNemici, (40, 40))
 
-imgNemici2 = pygame.image.load("nemici2.jpg")
+imgNemici2_path = os.path.join(os.path.dirname(__file__), "nemici2.jpg")
+imgNemici2 = pygame.image.load(imgNemici2_path)
 imgNemici2 = pygame.transform.scale(imgNemici2, (40, 40))
 
 # Definiamo la posizione iniziale dell'astronave, la posizione iniziale è al centro dello schermo
@@ -153,7 +156,8 @@ while menu:
                         shots.append(pygame.Rect(x + w // 2 - 2, y, 10, 15))
                         # Aggiungiamo la musica per i colpi sparati
                         pygame.mixer.init()
-                        pygame.mixer.music.load("suonocolpo.mp3")
+                        suonoColpo_path = os.path.join(os.path.dirname(__file__), "suonocolpo.mp3")
+                        pygame.mixer.music.load(suonoColpo_path)
                         pygame.mixer.music.set_volume(0.5)
                         pygame.mixer.music.play()
 
@@ -205,7 +209,8 @@ while menu:
                 # Se il gioco è terminato, visualizziamo il messaggio "HAI PERSO!"
                 if game_over:
                     pygame.mixer.init()
-                    pygame.mixer.music.load("scontro.mp3")
+                    scontro_path = os.path.join(os.path.dirname(__file__), "scontro.mp3")
+                    pygame.mixer.music.load(scontro_path)
                     pygame.mixer.music.set_volume(0.5)
                     pygame.mixer.music.play()
 
@@ -236,7 +241,8 @@ while menu:
                                 level_text = font.render("Sei salito di livello!", True, "white")
                                 # Aggiungiamo una musica per quando si raggiunge un nuovo livello
                                 pygame.mixer.init()
-                                pygame.mixer.music.load("nuovolivello.mp3")
+                                nuovoLivello_path = os.path.join(os.path.dirname(__file__), "nuovolivello.mp3")
+                                pygame.mixer.music.load(nuovoLivello_path)
                                 pygame.mixer.music.set_volume(0.5)
                                 pygame.mixer.music.play()
                                 screen.blit(level_text,(SCREEN_WIDTH // 2 - level_text.get_width() // 2,SCREEN_HEIGHT // 2 - level_text.get_height() // 2))
@@ -260,7 +266,8 @@ while menu:
                                 level_text = font.render("Sei salito di livello!", True, "white")
                                 # Aggiungiamo una musica per quando si raggiunge un nuovo livello
                                 pygame.mixer.init()
-                                pygame.mixer.music.load("nuovolivello.mp3")
+                                nuovoLivello_path = os.path.join(os.path.dirname(__file__), "nuovolivello.mp3")
+                                pygame.mixer.music.load(nuovoLivello_path)
                                 pygame.mixer.music.set_volume(0.5)
                                 pygame.mixer.music.play()
                                 screen.blit(level_text,(SCREEN_WIDTH // 2 - level_text.get_width() // 2,SCREEN_HEIGHT // 2 - level_text.get_height() // 2))
