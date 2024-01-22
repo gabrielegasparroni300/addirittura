@@ -65,10 +65,10 @@ player_pos_list = []
 
 player_speed = (SCREEN_WIDTH * 8) / 1920
 
-player_attack_radius = (SCREEN_WIDTH * 120) / 1920
+player_attack_radius = (SCREEN_WIDTH * 200) / 1920
 
-player_width = player_attack_radius
-player_height = player_attack_radius
+player_width = player_attack_radius // 2
+player_height = player_attack_radius // 2
 
 player_image = pygame.image.load("personaggio.png")
 player_image = pygame.transform.scale(player_image, (player_width, player_height))
@@ -215,7 +215,7 @@ while running:
     
     circle = screen.blit(surf,(spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
     
-    player = screen.blit(player_image, (spawn_point_x - (player_width / 2), spawn_point_y - (player_height / 2)))
+    player = screen.blit(player_image, (spawn_point_x, spawn_point_y))
     
     #Adding all of the UI elements
     
