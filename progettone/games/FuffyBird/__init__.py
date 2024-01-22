@@ -4,11 +4,13 @@
 import pygame
 import random
 import time
+import os
 pygame.init()
 
-pygame.mixer.init() 
-pygame.mixer.music.load("chief-keef-love-sosa.mp3") 
-pygame.mixer.music.set_volume(0.5) 
+pygame.mixer.init()
+music_path = os.path.join(os.path.dirname(__file__), "chief-keef-love-sosa.mp3")
+pygame.mixer.music.load(music_path)
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play()
 
 SCREEN_WIDTH = 800
@@ -24,14 +26,17 @@ pygame.time.set_timer(ADD_ENEMY,2000)
 enemies = []
 
 
-imgSfondo = pygame.image.load('sfondo.jpg')
+imgSfondo_path = os.path.join(os.path.dirname(__file__), 'sfondo.jpg')
+imgSfondo = pygame.image.load(imgSfondo_path)
 imgSfondo = pygame.transform.scale(imgSfondo, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 
-imgFuffy = pygame.image.load('fuffysosa.png')
+imgFuffy_path = os.path.join(os.path.dirname(__file__), 'fuffysosa.png')
+imgFuffy = pygame.image.load(imgFuffy_path)
 imgFuffy = pygame.transform.scale(imgFuffy,(35,35))
 
-imgPerso = pygame.image.load('PERSO.png')
+imgPerso_path = os.path.join(os.path.dirname(__file__), 'PERSO.png')
+imgPerso = pygame.image.load(imgPerso_path)
 imgPerso = pygame.transform.scale(imgPerso, (SCREEN_WIDTH, SCREEN_HEIGHT))
         
 x = SCREEN_WIDTH // 2

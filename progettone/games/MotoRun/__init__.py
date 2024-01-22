@@ -1,7 +1,8 @@
-# IMPORTAZIONE PYGAME E RANDOM
+# IMPORTAZIONE PYGAME, RANDOM E OS
 #manca solo da aggiungere il timer
 import pygame
 import random
+import os
 
 #INIZIO PYGAME
 pygame.init()
@@ -13,13 +14,15 @@ SCREEN_HEIGHT = 600
 clock = pygame.time.Clock()
 
 #AGGIUNTA SUONO IN LOOP
-pygame.mixer.init() 
-pygame.mixer.music.load("Honda CR 500 Sound Check Braaap!!!-0-16.9.mp3") 
-pygame.mixer.music.set_volume(0.5) 
+pygame.mixer.init()
+honda_path = os.path.join(os.path.dirname(__file__), "Honda CR 500 Sound Check Braaap!!!-0-16.9.mp3")
+pygame.mixer.music.load(honda_path)
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(loops = -1)
 
 # AGGIUNTA TERRENO SULLO SFONDO
-imgSfondo = pygame.image.load("terreno.png")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "terreno.png")
+imgSfondo = pygame.image.load(imgSfondo_path)
 screen = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
 #FONT SCRITTE INIZIALI
@@ -35,17 +38,21 @@ screen = pygame.display.set_mode( (800, 600) )
 pygame.display.set_caption("MOTO RUN")
 
 #AGGIUNTA IMMAGINE GIOCATORE
-imgMoto = pygame.image.load("motoUfficiale.png")
+imgMoto_path = os.path.join(os.path.dirname(__file__), "motoUfficiale.png")
+imgMoto = pygame.image.load(imgMoto_path)
 imgMoto = pygame.transform.scale(imgMoto,(70, 70))
 
 # AGGIUNTA IMMAGINI ENEMIES
-imgAlbero = pygame.image.load("alberoUfficiale.png")
+imgAlbero_path = os.path.join(os.path.dirname(__file__), "alberoUfficiale.png")
+imgAlbero = pygame.image.load(imgAlbero_path)
 imgAlbero = pygame.transform.scale(imgAlbero,(70, 70))
 
-imgTrattore = pygame.image.load("trattoreUfficiale.png")
+imgTrattore_path = os.path.join(os.path.dirname(__file__), "trattoreUfficiale.png")
+imgTrattore = pygame.image.load(imgTrattore_path)
 imgTrattore = pygame.transform.scale(imgTrattore,(70,70))
 
-imgMoneta = pygame.image.load("moneta.png")
+imgMoneta_path = os.path.join(os.path.dirname(__file__), "moneta.png")
+imgMoneta = pygame.image.load(imgMoneta_path)
 imgMoneta = pygame.transform.scale(imgMoneta,(70,70))
 
 # TEMPO DI AGGIUNTA ENEMIES

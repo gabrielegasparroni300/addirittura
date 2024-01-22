@@ -1,4 +1,4 @@
-import pygame, random, time
+import pygame, random, time, os
 
 pygame.init()
 
@@ -15,9 +15,10 @@ timer = 0
 #     print(f"{message} {runtime} seconds\t{(1.0 / runtime):.2f}fps")
 #     timer = now
 
-pygame.mixer.init() 
-pygame.mixer.music.load("sound.mp3") 
-pygame.mixer.music.set_volume(0.5) 
+pygame.mixer.init()
+music_path = os.path.join(os.path.dirname(__file__), "sound.mp3")
+pygame.mixer.music.load(music_path)
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play()
 
 pygame.time.get_ticks()
@@ -43,10 +44,12 @@ pygame.time.set_timer(ADD_ENEMY,400)
 enemies=[]
 
 
-imgSfondo = pygame.image.load("space.png") 
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "space.png") 
+imgSfondo = pygame.image.load(imgSfondo_path) 
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 
-imgspaceship = pygame.image.load("spaceship.png") 
+imgspaceship_path = os.path.join(os.path.dirname(__file__), "spaceship.png") 
+imgspaceship = pygame.image.load(imgspaceship_path) 
 imgspaceship = pygame.transform.scale(imgspaceship,(70,70))
 
 x = 0
@@ -57,7 +60,8 @@ height = 30
 
 speed = 6
  
-imgMeteorite=pygame.image.load("meteorite.png") 
+imgMeteorite_path=os.path.join(os.path.dirname(__file__), "meteorite.png") 
+imgMeteorite=pygame.image.load(imgMeteorite_path) 
 imgMeteorite = pygame.transform.scale(imgMeteorite,(100,40))
 
 haiperso = False
