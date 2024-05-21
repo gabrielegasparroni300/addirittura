@@ -1,4 +1,4 @@
-import pygame, random, MovementModule
+import pygame, random, MovementModule, os
 
 #God Protect Me
 
@@ -7,9 +7,12 @@ pygame.init()
 #Soundtrack
 
 pygame.mixer.init()
-pygame.mixer.music.load("soundtrack.mp3") 
+music_path = os.path.join(os.path.dirname(__file__), "soundtrack.mp3")
+pygame.mixer.music.load(music_path) 
 pygame.mixer.music.set_volume(0.85) 
 pygame.mixer.music.play(loops = -1)
+
+
 
 #Screen setup
 
@@ -19,7 +22,8 @@ SCREEN_HEIGHT = pygame.display.get_desktop_sizes()[0][1]
 screen = pygame.display.set_mode( (SCREEN_WIDTH, SCREEN_HEIGHT ) )
 pygame.display.set_caption("God Protect Me")
 
-background_image = pygame.image.load("background.jpg")
+background_path = os.path.join(os.path.dirname(__file__), "background.jpg")
+background_image = pygame.image.load(background_path)
 background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 #Main menu setup
@@ -49,7 +53,8 @@ base_height = (SCREEN_WIDTH * 300) / 1920
 base_x = SCREEN_WIDTH // 2 - base_width // 2
 base_y = SCREEN_HEIGHT // 2 - base_height // 2
 
-base_image = pygame.image.load("playerBase.png")
+base_path = os.path.join(os.path.dirname(__file__), "playerBase.png")
+base_image = pygame.image.load(base_path)
 base_image = pygame.transform.scale(base_image, (base_width, base_height))
 
 hp = 1500
@@ -70,7 +75,8 @@ player_attack_radius = (SCREEN_WIDTH * 200) / 1920
 player_width = player_attack_radius // 2
 player_height = player_attack_radius // 2
 
-player_image = pygame.image.load("personaggio.png")
+player_path = os.path.join(os.path.dirname(__file__), "personaggio.png")
+player_image = pygame.image.load(player_path)
 player_image = pygame.transform.scale(player_image, (player_width, player_height))
 
 w = player_attack_radius
@@ -98,10 +104,12 @@ dead_enemy_list = []
 target_x = SCREEN_WIDTH // 2
 target_y = SCREEN_HEIGHT // 2
 
-enemy_image = pygame.image.load("bomba.png")
+enemy_path = os.path.join(os.path.dirname(__file__), "bomba.png")
+enemy_image = pygame.image.load(enemy_path)
 enemy_image = pygame.transform.scale(enemy_image, ((SCREEN_WIDTH * 58) / 1920, (SCREEN_HEIGHT * 56) / 1080))
 
-dead_enemy_image = pygame.image.load("fulmine.png")
+dead_enemy_path = os.path.join(os.path.dirname(__file__), "fulmine.png")
+dead_enemy_image = pygame.image.load(dead_enemy_path)
 dead_enemy_image = pygame.transform.scale(dead_enemy_image, ((SCREEN_WIDTH * 70) / 1920, (SCREEN_HEIGHT * 100) / 1080))
 
 #Level generation
