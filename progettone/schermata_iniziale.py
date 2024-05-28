@@ -2,12 +2,13 @@
 import pygame
 from pathlib import Path
 import os
+import subprocess
 
 pygame.init()
 
 
 
-# Istruzioni
+# Path Istruzioni
 
 istruzioni = Path.cwd() / "istruzioni"
 
@@ -24,6 +25,23 @@ istrSpaceInvaders = istruzioni / "istruzioni_SpaceInvaders.txt"
 istrSpaceWars = istruzioni / "istruzioni_SpaceWars.txt"
 istrSpaceSomething = istruzioni / "istruzioni_SpaceSomething.txt"
 istrSuperSpace = istruzioni / "istruzioni_SuperSpace.txt"
+
+# Path Giochi
+giochi = Path.cwd() / "games"
+
+pathJumper = giochi / "Jumper" / "__init__.py"
+pathFuffyBird = giochi / "FuffyBird" / "__init__.py"
+pathGodProtectMe = giochi / "GodProtectMe" / "__init__.py"
+pathJumper = giochi / "Jumper" / "__init__.py"
+pathMoneyCatcher = giochi / "MoneyCatcher" / "__init__.py"
+pathMotoRun = giochi / "MotoRun" / "__init__.py"
+pathPacman = giochi / "Pacman" / "__init__.py"
+pathPong = giochi / "Pong" / "__init__.py"
+pathSlot = giochi / "Slot" / "__init__.py"
+pathSpaceInvaders = giochi / "SpaceInvaders" / "__init__.py"
+pathSpaceSomething = giochi / "SpaceSomething" / "__init__.py"
+pathSpaceWars = giochi / "SpaceWars" / "__init__.py"
+pathSuperSpace = giochi / "SuperSpace" / "__init__.py"
 
 # variabili
 
@@ -91,62 +109,62 @@ while running:
         # Jumper
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco1.collidepoint(mPos):
-                from games import Jumper
+                subprocess.run(["python", pathJumper])
                 
         # Space Something
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco2.collidepoint(mPos):
-                from games import SpaceSomething
+                subprocess.run(["python", pathSpaceSomething])
 
         # Space wars
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco3.collidepoint(mPos):
-                from games import SpaceWars
-
+                subprocess.run(["python", pathSpaceWars])
+                
         # God protect me
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco4.collidepoint(mPos):
-                from games import GodProtectMe
+                subprocess.run(["python", pathGodProtectMe])
                 
         # Space invaders
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco5.collidepoint(mPos):
-                from games import SpaceInvaders
+                subprocess.run(["python", pathSpaceInvaders])
                 
         # Money catcher
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco6.collidepoint(mPos):
-                from games import MoneyCatcher
+                subprocess.run(["python", pathMoneyCatcher])
                 
         # Slot
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco7.collidepoint(mPos):
-                from games import Slot
+                subprocess.run(["python", pathSlot])
                 
         # Fuffy bird
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco8.collidepoint(mPos):
-                from games import FuffyBird
+                subprocess.run(["python", pathFuffyBird])
                 
         # SuperSpace
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco9.collidepoint(mPos):
-                from games import SuperSpace
+                subprocess.run(["python", pathSuperSpace])
                 
         # MotoRUN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco10.collidepoint(mPos):
-                from games import MotoRun
+                subprocess.run(["python", pathMotoRun])
                 
         # PACMAN
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco11.collidepoint(mPos):
-                from games import Pacman
+                subprocess.run(["python", pathPacman])
                 
         # Pong
         if event.type == pygame.MOUSEBUTTONDOWN:
             if buttonGioco12.collidepoint(mPos):
-                from games import Pong
+                subprocess.run(["python", pathPong])
                 
         
 
