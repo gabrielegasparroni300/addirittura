@@ -54,12 +54,16 @@ half_WIDTH = SCREEN_WIDTH // 2
 half_HEIGHT = SCREEN_HEIGHT // 2
 
 # fonts
-Titlefont = pygame.font.SysFont('Impact', 70)
+
+imgTITOLO = pygame.image.load("GIOCHI.png")
+imgTITOLO = pygame.transform.scale(imgTITOLO,(446,120))
+
+# Titlefont = pygame.font.SysFont('Impact', 70)
 buttonFont = pygame.font.SysFont('Arial', 40)
 
 # testi
 textEsci = buttonFont.render('Esci' , True , "white")
-textTitolo = Titlefont.render("Giochi", True, "red")
+# textTitolo = Titlefont.render("Giochi", True, "red")
 textButton1 = buttonFont.render("Jumper",True,"black")
 textButton2 = buttonFont.render("Space something",True,"black")
 textButton3 = buttonFont.render("Space wars",True,"black")
@@ -189,7 +193,8 @@ while running:
     rectGioco3 = pygame.draw.rect(screen,buttonColor,buttonGioco11)
     rectGioco3 = pygame.draw.rect(screen,buttonColor,buttonGioco12)
     
-    screen.blit(textTitolo, (half_WIDTH - 100,100))
+    # screen.blit(textTitolo, (half_WIDTH - 100,100))
+    screen.blit(imgTITOLO,(half_WIDTH - 223,100))
     screen.blit(textEsci,(half_WIDTH + 500, half_HEIGHT - 400) )
     screen.blit(textButton1,(254,385))
     screen.blit(textButton2,(254,585))
@@ -203,6 +208,7 @@ while running:
     screen.blit(textButton10,(1466,385))
     screen.blit(textButton11,(1466,585))
     screen.blit(textButton12,(1466,785))
+    
     
     # aggiorna il contenuto dello schermo
     pygame.display.flip()
