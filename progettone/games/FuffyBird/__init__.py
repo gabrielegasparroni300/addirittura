@@ -5,6 +5,9 @@ import pygame
 import random
 import time
 import os
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 pygame.mixer.init()
@@ -137,3 +140,4 @@ while running:
 
 # Chiude pygame
 pygame.quit()
+

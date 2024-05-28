@@ -1,5 +1,7 @@
 import pygame, random, time, os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 timer = 0

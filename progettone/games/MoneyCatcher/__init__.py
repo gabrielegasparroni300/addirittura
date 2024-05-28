@@ -8,6 +8,7 @@ import os
 #importo funzione
 import score
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 #inizio pygame
 pygame.init() 

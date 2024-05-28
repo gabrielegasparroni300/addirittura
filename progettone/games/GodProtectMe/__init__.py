@@ -2,6 +2,8 @@ import pygame, random, MovementModule, os
 
 #God Protect Me
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 #Soundtrack

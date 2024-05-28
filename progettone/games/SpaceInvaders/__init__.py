@@ -6,6 +6,8 @@ import pygame, random, time, os
 
 conta = 0
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 # inizializzazione
 pygame.init()
 

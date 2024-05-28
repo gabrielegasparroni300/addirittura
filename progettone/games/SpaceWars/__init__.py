@@ -6,6 +6,8 @@
 # Importiamo i moduli necessari per il gioco, in questo caso random, pygame e os
 import pygame, random, os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 # Definiamo le dimensioni della finestra di gioco

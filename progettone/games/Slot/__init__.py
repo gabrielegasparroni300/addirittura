@@ -3,6 +3,8 @@ import random
 import time
 import os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 #variabili schermo

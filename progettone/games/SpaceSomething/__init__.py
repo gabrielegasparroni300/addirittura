@@ -7,6 +7,8 @@
 # Importiamo i moduli pygame, random e os
 import pygame, random, os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 # Importiamo i vari tasti della tastiera
 from pygame.locals import (
     K_UP,

@@ -7,6 +7,8 @@ import pygame
 import random
 import os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 pygame.init()
 
 #parte dove si programma la musica

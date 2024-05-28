@@ -2,6 +2,8 @@
 import pygame, random, time
 import os
 
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+
 # PROF: forse questi... andranno ripensati...
 pygame.init()
 
