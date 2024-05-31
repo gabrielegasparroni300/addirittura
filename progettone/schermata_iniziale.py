@@ -6,7 +6,11 @@ import subprocess
 
 pygame.init()
 
-
+# Immagini anteprima giochi
+imgAntJumper = pygame.image.load("anteprimaJumper.png")
+imgAntJumper = pygame.transform.scale(imgAntJumper,(250,100))
+imgAntSpaceSomething = pygame.image.load("anteprimaSpaceSomething.png")
+imgAntSpaceSomething = pygame.transform.scale(imgAntSpaceSomething,(250,100))
 
 # Path Istruzioni
 
@@ -79,18 +83,18 @@ textButton12 = buttonFont.render("Pong",True,"black")
 
 # pulsanti
 buttonEsci = pygame.Rect(half_WIDTH + 500, half_HEIGHT - 400, 100, 50)
-buttonGioco1 = pygame.Rect(254, 368, 150, 100)
-buttonGioco2 = pygame.Rect(254, 568, 250, 100)
-buttonGioco3 = pygame.Rect(254, 768, 175, 100)
-buttonGioco4 = pygame.Rect(658, 368, 225, 100)
-buttonGioco5 = pygame.Rect(658, 568, 225, 100)
-buttonGioco6 = pygame.Rect(658, 768, 225, 100)
-buttonGioco7 = pygame.Rect(1062, 368, 150, 100)
-buttonGioco8 = pygame.Rect(1062, 568, 150, 100)
-buttonGioco9 = pygame.Rect(1062, 768, 200, 100)
-buttonGioco10 = pygame.Rect(1466, 368, 175, 100)
-buttonGioco11 = pygame.Rect(1466, 568, 175, 100)
-buttonGioco12 = pygame.Rect(1466, 768, 150, 100)
+buttonGioco1 = pygame.Rect(225, 368, 250, 100)
+buttonGioco2 = pygame.Rect(225, 568, 250, 100)
+buttonGioco3 = pygame.Rect(225, 768, 250, 100)
+buttonGioco4 = pygame.Rect(632, 368, 250, 100)
+buttonGioco5 = pygame.Rect(632, 568, 250, 100)
+buttonGioco6 = pygame.Rect(632, 768, 250, 100)
+buttonGioco7 = pygame.Rect(1039, 368, 250, 100)
+buttonGioco8 = pygame.Rect(1039, 568, 250, 100)
+buttonGioco9 = pygame.Rect(1039, 768, 250, 100)
+buttonGioco10 = pygame.Rect(1446, 368, 250, 100)
+buttonGioco11 = pygame.Rect(1446, 568, 250, 100)
+buttonGioco12 = pygame.Rect(1446, 768, 250, 100)
 
 # lo screen (con titolo)
 pygame.display.set_caption("Schermata iniziale")
@@ -208,6 +212,13 @@ while running:
     screen.blit(textButton10,(1466,385))
     screen.blit(textButton11,(1466,585))
     screen.blit(textButton12,(1466,785))
+    
+    if buttonGioco1.collidepoint(mPos):
+        screen.blit(imgAntJumper,(225,368))
+    if buttonGioco2.collidepoint(mPos):
+        screen.blit(imgAntSpaceSomething,(225,568))
+    
+    
     
     
     # aggiorna il contenuto dello schermo
