@@ -11,6 +11,26 @@ imgAntJumper = pygame.image.load("anteprimaJumper.png")
 imgAntJumper = pygame.transform.scale(imgAntJumper,(250,100))
 imgAntSpaceSomething = pygame.image.load("anteprimaSpaceSomething.png")
 imgAntSpaceSomething = pygame.transform.scale(imgAntSpaceSomething,(250,100))
+imgAntSpaceWars = pygame.image.load("anteprimaSpaceWars.png")
+imgAntSpaceWars = pygame.transform.scale(imgAntSpaceWars,(250,100))
+imgAntGodProtectMe = pygame.image.load("anteprimaGodProtectMe.png")
+imgAntGodProtectMe = pygame.transform.scale(imgAntGodProtectMe,(250,100))
+imgAntSpaceInvaders = pygame.image.load("anteprimaSpaceInvaders.png")
+imgAntSpaceInvaders = pygame.transform.scale(imgAntSpaceInvaders,(250,100))
+imgAntMoneyCatcher = pygame.image.load("anteprimaMoneyCatcher.png")
+imgAntMoneyCatcher = pygame.transform.scale(imgAntMoneyCatcher,(250,100))
+imgAntSlot = pygame.image.load("anteprimaSlot.png")
+imgAntSlot = pygame.transform.scale(imgAntSlot,(250,100))
+imgAntFuffyBird = pygame.image.load("anteprimaFuffyBird.png")
+imgAntFuffyBird = pygame.transform.scale(imgAntFuffyBird,(250,100))
+imgAntSuperSpace = pygame.image.load("anteprimaSuperSpace.png")
+imgAntSuperSpace = pygame.transform.scale(imgAntSuperSpace,(250,100))
+imgAntMotoRUN = pygame.image.load("anteprimaMotoRUN.png")
+imgAntMotoRUN = pygame.transform.scale(imgAntMotoRUN,(250,100))
+imgAntPACMAN = pygame.image.load("anteprimaPACMAN.png")
+imgAntPACMAN = pygame.transform.scale(imgAntPACMAN,(250,100))
+imgAntPong = pygame.image.load("anteprimaPong.png")
+imgAntPong = pygame.transform.scale(imgAntPong,(250,100))
 
 # Path Istruzioni
 
@@ -217,6 +237,26 @@ while running:
         screen.blit(imgAntJumper,(225,368))
     if buttonGioco2.collidepoint(mPos):
         screen.blit(imgAntSpaceSomething,(225,568))
+    if buttonGioco3.collidepoint(mPos):
+        screen.blit(imgAntSpaceWars,(225,768))
+    if buttonGioco4.collidepoint(mPos):
+        screen.blit(imgAntGodProtectMe,(632,368))
+    if buttonGioco5.collidepoint(mPos):
+        screen.blit(imgAntSpaceInvaders,(632,568))
+    if buttonGioco6.collidepoint(mPos):
+        screen.blit(imgAntMoneyCatcher,(632,768))
+    if buttonGioco7.collidepoint(mPos):
+        screen.blit(imgAntSlot,(1039,368))
+    if buttonGioco8.collidepoint(mPos):
+        screen.blit(imgAntFuffyBird,(1039,568))
+    if buttonGioco9.collidepoint(mPos):
+        screen.blit(imgAntSuperSpace,(1039,768))
+    if buttonGioco10.collidepoint(mPos):
+        screen.blit(imgAntMotoRUN,(1446,368))
+    if buttonGioco11.collidepoint(mPos):
+        screen.blit(imgAntPACMAN,(1446,568))
+    if buttonGioco12.collidepoint(mPos):
+        screen.blit(imgAntPong,(1446,768))
     
     
     
