@@ -565,7 +565,7 @@ while running:
         
         
         nuvola1 = pygame.draw.rect(screen, "light blue", (150, 520, 85, 30))
-        nuvola2 = pygame.draw.rect(screen, "light blue", (500, 370, 85, 30))
+        nuvola2 = pygame.draw.rect(screen, "light blue", (460, 370, 85, 30))
         nuvola3 = pygame.draw.rect(screen, "light blue", (710, 320, 85, 30))
         nuvola4 = pygame.draw.rect(screen, "light blue", (330, 200, 85, 30))
         
@@ -587,7 +587,7 @@ while running:
         xD4 -= speed * 10
         
         screen.blit(nuvolaScurissima, (140, 500))
-        screen.blit(nuvolaScurissima, (490, 350))
+        screen.blit(nuvolaScurissima, (450, 350))
         screen.blit(nuvolaScurissima, (700, 300))
         screen.blit(nuvolaScurissima, (320, 180))
         

@@ -82,29 +82,31 @@ half_HEIGHT = SCREEN_HEIGHT // 2
 imgTITOLO = pygame.image.load(imgAnt_path / "GIOCHI.png")
 imgTITOLO = pygame.transform.scale(imgTITOLO,(446,120))
 
+imgSfondo = pygame.image.load(imgAnt_path / "sfondo.png") 
+imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
 # Titlefont = pygame.font.SysFont('Impact', 70)
 buttonFont = pygame.font.SysFont('Arial', 40)
 
 # testi
 textEsci = buttonFont.render('Esci' , True , "white")
 # textTitolo = Titlefont.render("Giochi", True, "red")
-textButton1 = buttonFont.render("Jumper",True,"black")
-text1Button2 = buttonFont.render("Space",True,"black")
-textButton2 = buttonFont.render("Space something",True,"black")
-text2Button2 = buttonFont.render("something",True,"black")
-textButton3 = buttonFont.render("Space wars",True,"black")
-text1Button4 = buttonFont.render("God protect",True,"black")
-text2Button4 = buttonFont.render("me",True,"black")
-text1Button5 = buttonFont.render("Space",True,"black")
-text2Button5 = buttonFont.render("invaders",True,"black")
-text1Button6 = buttonFont.render("Money",True,"black")
-text2Button6 = buttonFont.render("catcher",True,"black")
-textButton7 = buttonFont.render("Slot",True,"black")
-textButton8 = buttonFont.render("Fuffy bird",True,"black")
-textButton9 = buttonFont.render("SuperSpace",True,"black")
-textButton10 = buttonFont.render("MotoRUN",True,"black")
-textButton11 = buttonFont.render("PACMAN",True,"black")
-textButton12 = buttonFont.render("Pong",True,"black")
+textButton1 = buttonFont.render("Jumper",True,"dark blue")
+text1Button2 = buttonFont.render("Space",True,"dark blue")
+textButton2 = buttonFont.render("Space something",True,"dark blue")
+text2Button2 = buttonFont.render("something",True,"dark blue")
+textButton3 = buttonFont.render("Space wars",True,"dark blue")
+text1Button4 = buttonFont.render("God protect",True,"dark blue")
+text2Button4 = buttonFont.render("me",True,"dark blue")
+text1Button5 = buttonFont.render("Space",True,"dark blue")
+text2Button5 = buttonFont.render("invaders",True,"dark blue")
+text1Button6 = buttonFont.render("Money",True,"dark blue")
+text2Button6 = buttonFont.render("catcher",True,"dark blue")
+textButton7 = buttonFont.render("Slot",True,"dark blue")
+textButton8 = buttonFont.render("Fuffy bird",True,"dark blue")
+textButton9 = buttonFont.render("SuperSpace",True,"dark blue")
+textButton10 = buttonFont.render("MotoRUN",True,"dark blue")
+textButton11 = buttonFont.render("PACMAN",True,"dark blue")
+textButton12 = buttonFont.render("Pong",True,"dark blue")
 
 # pulsanti
 buttonEsci = pygame.Rect(half_WIDTH + 500, half_HEIGHT - 400, 100, 50)
@@ -202,7 +204,8 @@ while running:
         
 
     # colora lo schermo
-    screen.fill("oldlace")
+    screen.fill("dark blue")
+    screen.blit(imgSfondo,(0,0))
     
     buttonColor = "red"
     buttonColorEsci = "red"
