@@ -1,35 +1,35 @@
 # importa ed inizializza la libreria pygame
 import pygame
 from pathlib import Path
-import os
 import subprocess
 
 pygame.init()
 
 # Immagini anteprima giochi
-imgAntJumper = pygame.image.load("anteprimaJumper.png")
+imgAnt_path = Path.cwd() / "immaginiAnteprima"
+imgAntJumper = pygame.image.load(imgAnt_path / "anteprimaJumper.png")
 imgAntJumper = pygame.transform.scale(imgAntJumper,(250,100))
-imgAntSpaceSomething = pygame.image.load("anteprimaSpaceSomething.png")
+imgAntSpaceSomething = pygame.image.load(imgAnt_path / "anteprimaSpaceSomething.png")
 imgAntSpaceSomething = pygame.transform.scale(imgAntSpaceSomething,(250,100))
-imgAntSpaceWars = pygame.image.load("anteprimaSpaceWars.png")
+imgAntSpaceWars = pygame.image.load(imgAnt_path / "anteprimaSpaceWars.png")
 imgAntSpaceWars = pygame.transform.scale(imgAntSpaceWars,(250,100))
-imgAntGodProtectMe = pygame.image.load("anteprimaGodProtectMe.png")
+imgAntGodProtectMe = pygame.image.load(imgAnt_path / "anteprimaGodProtectMe.png")
 imgAntGodProtectMe = pygame.transform.scale(imgAntGodProtectMe,(250,100))
-imgAntSpaceInvaders = pygame.image.load("anteprimaSpaceInvaders.png")
+imgAntSpaceInvaders = pygame.image.load(imgAnt_path / "anteprimaSpaceInvaders.png")
 imgAntSpaceInvaders = pygame.transform.scale(imgAntSpaceInvaders,(250,100))
-imgAntMoneyCatcher = pygame.image.load("anteprimaMoneyCatcher.png")
+imgAntMoneyCatcher = pygame.image.load(imgAnt_path / "anteprimaMoneyCatcher.png")
 imgAntMoneyCatcher = pygame.transform.scale(imgAntMoneyCatcher,(250,100))
-imgAntSlot = pygame.image.load("anteprimaSlot.png")
+imgAntSlot = pygame.image.load(imgAnt_path / "anteprimaSlot.png")
 imgAntSlot = pygame.transform.scale(imgAntSlot,(250,100))
-imgAntFuffyBird = pygame.image.load("anteprimaFuffyBird.png")
+imgAntFuffyBird = pygame.image.load(imgAnt_path / "anteprimaFuffyBird.png")
 imgAntFuffyBird = pygame.transform.scale(imgAntFuffyBird,(250,100))
-imgAntSuperSpace = pygame.image.load("anteprimaSuperSpace.png")
+imgAntSuperSpace = pygame.image.load(imgAnt_path / "anteprimaSuperSpace.png")
 imgAntSuperSpace = pygame.transform.scale(imgAntSuperSpace,(250,100))
-imgAntMotoRUN = pygame.image.load("anteprimaMotoRUN.png")
+imgAntMotoRUN = pygame.image.load(imgAnt_path / "anteprimaMotoRUN.png")
 imgAntMotoRUN = pygame.transform.scale(imgAntMotoRUN,(250,100))
-imgAntPACMAN = pygame.image.load("anteprimaPACMAN.png")
+imgAntPACMAN = pygame.image.load(imgAnt_path / "anteprimaPACMAN.png")
 imgAntPACMAN = pygame.transform.scale(imgAntPACMAN,(250,100))
-imgAntPong = pygame.image.load("anteprimaPong.png")
+imgAntPong = pygame.image.load(imgAnt_path / "anteprimaPong.png")
 imgAntPong = pygame.transform.scale(imgAntPong,(250,100))
 
 # Path Istruzioni
@@ -79,7 +79,7 @@ half_HEIGHT = SCREEN_HEIGHT // 2
 
 # fonts
 
-imgTITOLO = pygame.image.load("GIOCHI.png")
+imgTITOLO = pygame.image.load(imgAnt_path / "GIOCHI.png")
 imgTITOLO = pygame.transform.scale(imgTITOLO,(446,120))
 
 # Titlefont = pygame.font.SysFont('Impact', 70)
@@ -224,7 +224,7 @@ while running:
     
     # screen.blit(textTitolo, (half_WIDTH - 100,100))
     screen.blit(imgTITOLO,(half_WIDTH - 223,100))
-    screen.blit(textEsci,(half_WIDTH + 500, half_HEIGHT - 400) )
+    screen.blit(textEsci,(half_WIDTH + 511, half_HEIGHT - 397) )
     screen.blit(textButton1,(283,395))
     screen.blit(text1Button2,(293,573))
     screen.blit(text2Button2,(255,618))

@@ -4,8 +4,10 @@
 import pygame
 import random
 import time
+import os
 #importo funzione
 import score
+
 
 
 #inizio pygame
@@ -80,15 +82,20 @@ enemies = []
 
 #-----------------------------------------------------------------
 #IMMAGINI SFONDO, NAVICELLA, MONETE, ALIENI,GRUZZOLETTO
-imgSfondo = pygame.image.load("spaziosfondo.jpg")
+imgSfondo_path = os.path.join(os.path.dirname(__file__), "spaziosfondo.jpg")
+imgSfondo = pygame.image.load(imgSfondo_path)
 imgSfondo = pygame.transform.scale(imgSfondo,(SCREEN_WIDTH,SCREEN_HEIGHT))
-imgNavicella = pygame.image.load("razzo.png")
+imgNavicella_path = os.path.join(os.path.dirname(__file__), "razzo.png")
+imgNavicella = pygame.image.load(imgNavicella_path)
 imgNavicella = pygame.transform.scale(imgNavicella,(80,100))
-imgMoneta = pygame.image.load("Moneta.png")
+imgMoneta_path = os.path.join(os.path.dirname(__file__), "Moneta.png")
+imgMoneta = pygame.image.load(imgMoneta_path)
 imgMoneta = pygame.transform.scale(imgMoneta,(40,40))
-imgAlieno = pygame.image.load("alienogiusto.png")
+imgAlieno_path = os.path.join(os.path.dirname(__file__), "alienogiusto.png")
+imgAlieno = pygame.image.load(imgAlieno_path)
 imgAlieno = pygame.transform.scale(imgAlieno,(60,70))
-imgGruzzoletto = pygame.image.load("gruzzoletto.png")
+imgGruzzoletto_path = os.path.join(os.path.dirname(__file__), "gruzzoletto.png")
+imgGruzzoletto = pygame.image.load(imgGruzzoletto_path)
 imgGruzzoletto = pygame.transform.scale(imgGruzzoletto, (90, 90))
 
 x = SCREEN_WIDTH // 2
@@ -193,7 +200,8 @@ while running: #eseguito solo se running è ancora True
             money.pop(n)
            
             #suono monete
-            pygame.mixer.music.load("monetina.mp3")
+            musicMonetina_path = os.path.join(os.path.dirname(__file__), "monetina.mp3")
+            pygame.mixer.music.load(musicMonetina_path)
             pygame.mixer.music.set_volume(0.5)
             pygame.mixer.music.play()
             break
@@ -214,7 +222,8 @@ while running: #eseguito solo se running è ancora True
         if player.colliderect(HANGER):
            
             #suono bonus
-            pygame.mixer.music.load("bonusuono.mp3")
+            musicBonusuono_path = os.path.join(os.path.dirname(__file__), "bonusuono.mp3")
+            pygame.mixer.music.load(musicBonusuono_path)
             pygame.mixer.music.set_volume(0.5)
             pygame.mixer.music.play()
            
@@ -245,7 +254,8 @@ while running: #eseguito solo se running è ancora True
         if player.colliderect(Alien):
            
             #suono morte
-            pygame.mixer.music.load("mortesuono.mp3")
+            musicMortesuono_path = os.path.join(os.path.dirname(__file__), "mortesuono.mp3")
+            pygame.mixer.music.load(musicMortesuono_path)
             pygame.mixer.music.set_volume(0.5)
             pygame.mixer.music.play()
            
